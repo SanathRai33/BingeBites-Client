@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import '../styles/auth.css'
+import '../../styles/auth.css'
 
-const FoodPartnerLogin = () => {
-  const [role, setRole] = useState('partner')
+const UserLogin = () => {
+  const [role, setRole] = useState('user')
 
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
-
+        
         <div className="auth-header">
           <h2>{role === 'user' ? 'Welcome back' : 'Partner sign in'}</h2>
-          <p className="muted">{role === 'user' ? 'Sign in to continue to BingeBites' : 'Access your partner dashboard'}</p>
+          <p className="muted">
+            {role === 'user' ? 'Sign in to continue to BingeBites' : 'Access your partner dashboard'}
+          </p>
         </div>
         
         <div className="role-toggle">
@@ -37,6 +39,15 @@ const FoodPartnerLogin = () => {
           <label className="form-label">Password</label>
           <input className="form-input" type="password" placeholder="••••••••" />
 
+          {role === 'user' && (
+            <div className="row-between">
+              <label className="checkbox">
+                <input type="checkbox" /> Remember me
+              </label>
+              <a className="muted small" href="#">Forgot?</a>
+            </div>
+          )}
+
           <button className="btn-primary" type="button">Sign in</button>
 
           <p className="auth-foot">New here? <a href={role === 'user' ? '/user/register' : '/food-partner/register'}>Create account</a></p>
@@ -46,4 +57,4 @@ const FoodPartnerLogin = () => {
   )
 }
 
-export default FoodPartnerLogin
+export default UserLogin
