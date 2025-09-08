@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom' // Correct import
-import axios from 'axios'                       // Import axios
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'              
 import '../../styles/auth.css'
 
 const FoodPartnerLogin = () => {
@@ -23,13 +23,8 @@ const FoodPartnerLogin = () => {
     e.preventDefault()
 
     try {
-      const endpoint =
-        role === 'partner'
-          ? 'http://localhost:3000/api/auth/foodPartner/login'
-          : 'http://localhost:3000/api/auth/user/login'
-
-      const res = await axios.post(
-        endpoint,
+      await axios.post(
+        'http://localhost:3000/api/auth/foodPartner/login',
         {
           email: formData.email,
           password: formData.password
@@ -37,14 +32,7 @@ const FoodPartnerLogin = () => {
         { withCredentials: true }
       )
 
-      console.log(res.data) // optional: see response
-
-      // Navigate based on role
-      if (role === 'partner') {
-        navigate('/food-partner/dashboard')
-      } else {
-        navigate('/user/dashboard')
-      }
+      navigate('/foodPartner')
     } catch (error) {
       console.error('Login failed:', error.response?.data || error.message)
     }
