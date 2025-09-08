@@ -9,23 +9,21 @@ const UserLogin = () => {
       <div className="auth-card">
         
         <div className="auth-header">
-          <h2>{role === 'user' ? 'Welcome back' : 'Partner sign in'}</h2>
-          <p className="muted">
-            {role === 'user' ? 'Sign in to continue to BingeBites' : 'Access your partner dashboard'}
-          </p>
+          <h2>Welcome back</h2>
+          <p className="muted">Sign in to continue to BingeBites</p>
         </div>
         
         <div className="role-toggle">
           <button
             className={`role-btn ${role === 'user' ? 'active' : ''}`}
-            onClick={() => setRole('user')}
+            onClick={() => {setRole('user'); navigate('/user/login')}}
             type="button"
           >
             User
           </button>
           <button
             className={`role-btn ${role === 'partner' ? 'active' : ''}`}
-            onClick={() => setRole('partner')}
+            onClick={() => {setRole('partner'); navigate('/food-partner/login')}}
             type="button"
           >
             Partner
@@ -34,7 +32,7 @@ const UserLogin = () => {
 
         <div className="form">
           <label className="form-label">Email</label>
-          <input className="form-input" type="email" placeholder={role === 'user' ? 'you@domain.com' : 'partner@business.com'} />
+          <input className="form-input" type="email" placeholder='partner@business.com' />
 
           <label className="form-label">Password</label>
           <input className="form-input" type="password" placeholder="••••••••" />
@@ -50,7 +48,7 @@ const UserLogin = () => {
 
           <button className="btn-primary" type="button">Sign in</button>
 
-          <p className="auth-foot">New here? <a href={role === 'user' ? '/user/register' : '/food-partner/register'}>Create account</a></p>
+          <p className="auth-foot">New here? <a href='/user/register'>Create account</a></p>
         </div>
       </div>
     </div>

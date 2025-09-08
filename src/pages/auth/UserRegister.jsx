@@ -7,8 +7,7 @@ const UserRegister = () => {
 
   const navigate = useNavigate();
 
-  const [role, setRole] = useState('user');
-
+  const [role, setRole] = useState('user')
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -36,8 +35,6 @@ const UserRegister = () => {
     })
 
     navigate('/')
-
-    console.log("Response", res.data)
   }
 
   return (
@@ -45,25 +42,21 @@ const UserRegister = () => {
       <div className="auth-card">
 
         <div className="auth-header">
-          <h2>{role === 'user' ? 'Create account' : 'Partner sign up'}</h2>
-          <p className="muted">
-            {role === 'user'
-              ? 'Sign up to start enjoying BingeBites'
-              : 'Create a partner account to list your food'}
-          </p>
+          <h2>Create account</h2>
+          <p className="muted"> Sign up to start enjoying BingeBites</p>
         </div>
 
         <div className="role-toggle">
           <button
             className={`role-btn ${role === 'user' ? 'active' : ''}`}
-            onClick={() => setRole('user')}
+            onClick={() => {setRole('user'); navigate('/user/register')}}
             type="button"
           >
             User
           </button>
           <button
             className={`role-btn ${role === 'partner' ? 'active' : ''}`}
-            onClick={() => setRole('partner')}
+            onClick={() => {setRole('partner'); navigate('/food-partner/register')}}
             type="button"
           >
             Partner
@@ -71,8 +64,6 @@ const UserRegister = () => {
         </div>
 
         <form className="form" onSubmit={handleSubmit}>
-          {role === 'user' ? (
-            <>
               <div className="form-row">
                 <div>
                   <label className="form-label">First name</label>
@@ -123,46 +114,6 @@ const UserRegister = () => {
               <button className="btn-primary" type="submit">Create account</button>
 
               <p className="auth-foot">Already have an account? <a href="/user/login">Sign in</a></p>
-            </>
-          ) : (
-            <>
-              <label className="form-label">Business name</label>
-              <input
-                name="businessName"
-                className="form-input"
-                placeholder="Tasty Bites"
-                value={formData.businessName}
-                onChange={handleChange}
-                required
-              />
-
-              <label className="form-label">Contact email</label>
-              <input
-                name="contactEmail"
-                className="form-input"
-                type="email"
-                placeholder="partner@business.com"
-                value={formData.contactEmail}
-                onChange={handleChange}
-                required
-              />
-
-              <label className="form-label">Password</label>
-              <input
-                name="partnerPassword"
-                className="form-input"
-                type="password"
-                placeholder="••••••••"
-                value={formData.partnerPassword}
-                onChange={handleChange}
-                required
-              />
-
-              <button className="btn-primary" type="submit">Create partner account</button>
-
-              <p className="auth-foot">Already a partner? <a href="/food-partner/login">Sign in</a></p>
-            </>
-          )}
         </form>
       </div>
     </div>
