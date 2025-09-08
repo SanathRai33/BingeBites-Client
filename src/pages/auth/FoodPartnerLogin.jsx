@@ -1,46 +1,114 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom' // Correct import
+import axios from 'axios'                       // Import axios
 import '../../styles/auth.css'
 
 const FoodPartnerLogin = () => {
+  const navigate = useNavigate()
   const [role, setRole] = useState('partner')
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const endpoint =
+        role === 'partner'
+          ? 'http://localhost:3000/api/auth/foodPartner/login'
+          : 'http://localhost:3000/api/auth/user/login'
+
+      const res = await axios.post(
+        endpoint,
+        {
+          email: formData.email,
+          password: formData.password
+        },
+        { withCredentials: true }
+      )
+
+      console.log(res.data) // optional: see response
+
+      // Navigate based on role
+      if (role === 'partner') {
+        navigate('/food-partner/dashboard')
+      } else {
+        navigate('/user/dashboard')
+      }
+    } catch (error) {
+      console.error('Login failed:', error.response?.data || error.message)
+    }
+  }
+
+  const handleRoleChange = (newRole, path) => {
+    setRole(newRole)
+    navigate(path)
+  }
 
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
-
         <div className="auth-header">
           <h2>Partner sign in</h2>
           <p className="muted">Access your partner dashboard</p>
         </div>
-        
+
         <div className="role-toggle">
           <button
             className={`role-btn ${role === 'user' ? 'active' : ''}`}
-            onClick={() => {setRole('user'); navigate('/user/login')}}
+            onClick={() => handleRoleChange('user', '/user/login')}
             type="button"
           >
             User
           </button>
           <button
             className={`role-btn ${role === 'partner' ? 'active' : ''}`}
-            onClick={() => {setRole('partner'); navigate('/food-partner/login')}}
+            onClick={() => handleRoleChange('partner', '/food-partner/login')}
             type="button"
           >
             Partner
           </button>
         </div>
 
-        <div className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <label className="form-label">Email</label>
-          <input className="form-input" type="email" placeholder='partner@business.com' />
+          <input
+            className="form-input"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="partner@business.com"
+          />
 
           <label className="form-label">Password</label>
-          <input className="form-input" type="password" placeholder="••••••••" />
+          <input
+            className="form-input"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="••••••••"
+          />
 
-          <button className="btn-primary" type="button">Sign in</button>
+          <button className="btn-primary" type="submit">
+            Sign in
+          </button>
 
-          <p className="auth-foot">New here? <a href='/food-partner/register'>Create account</a></p>
-        </div>
+          <p className="auth-foot">
+            New here? <a href="/food-partner/register">Create account</a>
+          </p>
+        </form>
       </div>
     </div>
   )
