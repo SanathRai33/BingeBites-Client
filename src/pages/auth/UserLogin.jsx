@@ -34,7 +34,7 @@ const UserLogin = () => {
         { withCredentials: true }
       )
 
-      navigate('/Home')
+      navigate('/')
     } catch (error) {
       console.error('Login failed:', error.response?.data || error.message)
     }

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Reels.css';
+import Loading from './Loading';
 
 const Reels = () => {
     const [videoData, setVideoData] = useState([]);
@@ -9,7 +10,6 @@ const Reels = () => {
 
     const containerRef = useRef();
 
-    // Fetch videos once when component mounts
     useEffect(() => {
         axios.get('http://localhost:3000/api/food/get', {
             withCredentials: true
@@ -24,7 +24,6 @@ const Reels = () => {
             });
     }, []);
 
-    // Handle play/pause of videos
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
@@ -54,7 +53,9 @@ const Reels = () => {
 
     return (
         <div className="video-container" ref={containerRef}>
-            {videoData.map(video => (
+            {loading ? (
+                <Loading />
+            ) : (videoData.map(video => (
                 <div className="video-item" key={video._id}>
                     <video src={video.video} muted loop autoPlay playsInline />
                     <div className="overlay">
@@ -62,7 +63,7 @@ const Reels = () => {
                         <Link to={`/food-partner/${video._id}`} className="visit-btn">Shop Now</Link>
                     </div>
                 </div>
-            ))}
+            )))}
         </div>
 
     );
