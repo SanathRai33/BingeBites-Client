@@ -60,7 +60,7 @@ const Reels = () => {
                     <video src={video.video} muted loop autoPlay playsInline />
                     <div className="overlay">
                         <div className="description">{video.description}</div>
-                        <Link to={`/food-partner/${video._id}`} className="visit-btn">Shop Now</Link>
+                        <Link to={`/food-partner/${video.foodPartner}`} className="visit-btn">Shop Now</Link>
                     </div>
                 </div>
             )))}

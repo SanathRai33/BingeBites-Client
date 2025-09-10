@@ -32,9 +32,11 @@
 .profile-image {
   width: 100px;
   height: 100px;
-  background: #4caf50; /* fresh green */
+  background-image: url('https://img.freepik.com/premium-vector/tasty-food-chef-logo-mascot-template_190190-133.jpg?w=360'); 
+  background-position: center;
+  background-size: cover;
   border-radius: 50%;
-  border: 3px solid #fff;
+  /* border: 3px solid #fff; */
 }
 
 .profile-info {
