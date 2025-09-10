@@ -93,6 +93,7 @@
 .video-placeholder {
   background: #ffccbc;
   height: 200px;
+  width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,6 +102,18 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.video-placeholder video {
+  width: 120px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  position: absolute;
+  top: 0;
 }
 
 .video-placeholder:hover {
@@ -127,7 +140,9 @@
   }
 
   .video-placeholder {
-    /* height: 70px; */
+    width: 120px;
+    height: 200px;
     font-size: 0.9rem;
   }
+
 }

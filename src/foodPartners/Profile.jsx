@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
+  const [ videoData, setVideoData ] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -13,7 +14,7 @@ const Profile = () => {
     })
       .then(res => {
         setProfileData(res.data.foodPartner);
-        console.log(res.data);
+        setVideoData(res.data.foodPartner.foodItems);
       })
       .catch(error => {
         console.error('Error fetching profile:', error);
@@ -36,7 +37,7 @@ const Profile = () => {
 
       <div className="profile-stats">
         <div className="stat-item">
-          <div className="stat-value">{profileData?.totalMeals || 0}</div>
+          <div className="stat-value">{videoData?.length || 0}</div>
           <div className="stat-label">Total Meals</div>
         </div>
         <div className="stat-item">
@@ -46,9 +47,9 @@ const Profile = () => {
       </div>
 
       <div className="profile-videos">
-        {Array.from({ length: 9 }).map((_, index) => (
+        {videoData.map((video, index) => (
           <div className="video-placeholder" key={index}>
-            video
+            <video style={{}} src={video.video} ></video>
           </div>
         ))}
       </div>
