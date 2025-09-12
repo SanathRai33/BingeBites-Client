@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/CreateFood.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';  
 
 const CreateFood = () => {
     const [foodName, setFoodName] = useState('');
     const [description, setDescription] = useState('');
     const [video, setVideo] = useState(null);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,6 +26,7 @@ const CreateFood = () => {
             .catch(error => {
                 console.error('Error creating food:', error.response || error.message);
             });
+        navigate('/foodPartner');
     };
 
 
