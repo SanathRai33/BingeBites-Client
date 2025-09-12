@@ -127,7 +127,7 @@ const Reels = () => {
                                     <FaHome style={{ height: '30px', width: '30px', color: 'white' }} />
                                     <p>Home</p>
                                 </Link>
-                                <Link to="/collection">
+                                <Link to="/user/collection">
                                     <FaSave style={{ height: '30px', width: '30px', color: 'white' }} />
                                     <p>Saved</p>
                                 </Link>
