@@ -60,8 +60,9 @@ const Reels = () => {
     }, [videoData]);
 
     const handleLike = (id) => {
-        // Implement like functionality
-        console.log('Liked video:', id);
+        axios.post('http://localhost:3000/api/food/like', { foodId: id }, {
+            withCredentials: true
+        })
     };
 
     const handleSave = (id) => {
