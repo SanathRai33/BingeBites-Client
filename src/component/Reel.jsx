@@ -66,8 +66,9 @@ const Reels = () => {
     };
 
     const handleSave = (id) => {
-        // Implement save functionality
-        console.log('Saved video:', id);
+        axios.post('http://localhost:3000/api/food/save', { foodId: id }, {
+            withCredentials: true
+        })
     };
 
     const handleComment = (id) => {
