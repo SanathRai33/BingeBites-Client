@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../../styles/Collection.css';
+import '../../styles/Collections.css';
 
 const Collection = () => {
     const [likedVideos, setLikedVideos] = useState([]);
