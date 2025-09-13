@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Reels.css';
 import Loading from './Loading';
-import { FaHeart, FaRegBookmark, FaComment, FaHome, FaSave } from 'react-icons/fa';
+import { FaHeart, FaBookmark, FaRegComment, FaHome, FaSave } from 'react-icons/fa';
 
 const Reels = () => {
     const [videoData, setVideoData] = useState([]);
     const [ name, setName ] = useState("");
     const [loading, setLoading] = useState(true);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
 
     const containerRef = useRef();
     const videoRefs = useRef([]);
@@ -63,6 +64,10 @@ const Reels = () => {
         axios.post('http://localhost:3000/api/food/like', { foodId: id }, {
             withCredentials: true
         })
+        .then(res =>{
+            console.log(res.data.status);
+        })
+        .catch(err => console.log(err));
     };
 
     const handleSave = (id) => {
@@ -94,18 +99,15 @@ const Reels = () => {
 
                             <div className="reel-actions">
                                 <div className="action-btn" onClick={() => handleLike(video._id)}>
-                                    {/* <span style={{ height: '30px', width: '30px'}}>❤️</span> */}
-                                    <FaHeart style={{ height: '30px', width: '30px' }} />
-                                    <span className="action-count">23</span>
+                                    <FaHeart style={{ height: '30px', width: '30px', color: 'red' }} />
+                                    <span className="action-count">{video.likes}</span>
                                 </div>
                                 <div className="action-btn" onClick={() => handleSave(video._id)}>
-                                    {/* <span style={{ height: '30px', width: '30px'}}>🔖</span> */}
-                                    <FaRegBookmark style={{ height: '30px', width: '30px' }} />
+                                    <FaBookmark style={{ height: '30px', width: '30px', color: '#1c56ed' }} />
                                     <span className="action-count">23</span>
                                 </div>
                                 <div className="action-btn" onClick={() => handleComment(video._id)}>
-                                    {/* <span style={{ height: '30px', width: '30px'}}>💬</span> */}
-                                    <FaComment style={{ height: '30px', width: '30px' }} />
+                                    <FaRegComment style={{ height: '30px', width: '30px', color: 'white' }} />
                                     <span className="action-count">45</span>
                                 </div>
                             </div>
@@ -122,7 +124,8 @@ const Reels = () => {
                                 <div className='food-name' >{video.name}</div>
                                 <div className="video-description">{video.description}</div>
                             </div>
-                            <div className="navigation">
+                        </div>
+                        <div className="navigation">
                                 <Link to="/">
                                     <FaHome style={{ height: '30px', width: '30px', color: 'white' }} />
                                     <p>Home</p>
@@ -132,8 +135,6 @@ const Reels = () => {
                                     <p>Saved</p>
                                 </Link>
                             </div>
-
-                        </div>
                     </div>
                 ))
             )}
