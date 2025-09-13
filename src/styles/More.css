@@ -9,6 +9,14 @@
   gap: 15px;
 }
 
+.head {
+  cursor: pointer;
+  width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
 .more-container h1 {
   text-align: center;
   color: var(--text);

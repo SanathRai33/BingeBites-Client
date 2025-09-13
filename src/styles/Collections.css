@@ -1,8 +1,9 @@
 .collection-container {
-    padding: 20px;
+    padding: 20px 10px;
     color: #fff;
-    background-color: #000;
+    background-color: var(--bg);
     min-height: 100vh;
+    width: 100%;
 }
 
 h2 {
@@ -17,7 +18,7 @@ h2 {
 }
 
 .video-card {
-    width: 200px;
+    width: 177px;
     background-color: #222;
     border-radius: 8px;
     overflow: hidden;

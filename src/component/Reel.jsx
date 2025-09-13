@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Reels.css';
 import Loading from './Loading';
-import { FaHeart, FaBookmark, FaRegComment, FaHome, FaSave } from 'react-icons/fa';
+import { FaHeart, FaBookmark, FaRegComment, FaHome, FaGripVertical, FaEllipsisV } from 'react-icons/fa';
 
 const Reels = () => {
     const [videoData, setVideoData] = useState([]);
-    const [ name, setName ] = useState("");
+    const [name, setName] = useState("");
     const [loading, setLoading] = useState(true);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const [likeCount, setLikeCount] = useState(0);
+    const [savedStatus, setSavedStatus] = useState(false);
 
 
     const containerRef = useRef();
@@ -21,6 +23,7 @@ const Reels = () => {
         })
             .then(response => {
                 setVideoData(response.data.foodItems);
+                setLikeCount(response.data.foodItems.likes);
                 setName(response.data.partnerName[0].name);
                 setLoading(false);
                 console.log(response.data);
@@ -64,16 +67,26 @@ const Reels = () => {
         axios.post('http://localhost:3000/api/food/like', { foodId: id }, {
             withCredentials: true
         })
-        .then(res =>{
-            console.log(res.data.status);
-        })
-        .catch(err => console.log(err));
+            .then(res => {
+                console.log(res.data.status);
+                if (res.data.status === true) {
+                    setLikeCount(likeCount + 1);
+                } else {
+                    setLikeCount(likeCount - 1);
+                }
+            })
+            .catch(err => console.log(err));
     };
 
     const handleSave = (id) => {
         axios.post('http://localhost:3000/api/food/save', { foodId: id }, {
             withCredentials: true
         })
+            .then(res =>{
+                 console.log(res.data)
+                 setSavedStatus(!savedStatus);
+            })
+            .catch(err => console.log(err));
     };
 
     const handleComment = (id) => {
@@ -104,7 +117,7 @@ const Reels = () => {
                                 </div>
                                 <div className="action-btn" onClick={() => handleSave(video._id)}>
                                     <FaBookmark style={{ height: '30px', width: '30px', color: '#1c56ed' }} />
-                                    <span className="action-count">23</span>
+                                    {/* <span className="action-count">23</span> */}
                                 </div>
                                 <div className="action-btn" onClick={() => handleComment(video._id)}>
                                     <FaRegComment style={{ height: '30px', width: '30px', color: 'white' }} />
@@ -126,15 +139,15 @@ const Reels = () => {
                             </div>
                         </div>
                         <div className="navigation">
-                                <Link to="/">
-                                    <FaHome style={{ height: '30px', width: '30px', color: 'white' }} />
-                                    <p>Home</p>
-                                </Link>
-                                <Link to="/user/more">
-                                    <FaSave style={{ height: '30px', width: '30px', color: 'white' }} />
-                                    <p>Saved</p>
-                                </Link>
-                            </div>
+                            <Link to="/">
+                                <FaHome style={{ height: '30px', width: '30px', color: 'white' }} />
+                                <p>Home</p>
+                            </Link>
+                            <Link to="/user/more">
+                                <FaEllipsisV style={{ height: '30px', width: '30px', color: 'white' }} />
+                                <p>More</p>
+                            </Link>
+                        </div>
                     </div>
                 ))
             )}

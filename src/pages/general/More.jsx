@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/More.css';
-import { FaBookmark, FaExclamationCircle, FaFileAlt, FaHeart, FaSignOutAlt, FaUserAlt } from 'react-icons/fa';
+import { FaArrowAltCircleLeft, FaArrowLeft, FaBookmark, FaExclamationCircle, FaFileAlt, FaHeart, FaSignOutAlt, FaUserAlt } from 'react-icons/fa';
 import axios from 'axios';
 
 const More = () => {
@@ -23,7 +23,10 @@ const More = () => {
 
     return (
         <div className="more-container">
+            <div className="head" onClick={() => navigate(-1)}>
+                <FaArrowLeft style={{ width: '24px', height: '24px',  borderRadius: '50%', padding: '5px' }} />
             <h1>User information</h1>
+            </div>
 
             <div className="more-item" onClick={() => navigate('/user/liked')}>
                 <FaHeart style={{ width: '24px', height: '24px' }} /><span> Liked Videos</span>
