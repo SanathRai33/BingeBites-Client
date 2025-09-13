@@ -18,13 +18,13 @@ const Reels = () => {
     const videoRefs = useRef([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/food/get', {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/food/get`, {
             withCredentials: true
         })
             .then(response => {
                 setVideoData(response.data.foodItems);
-                setLikeCount(response.data.foodItems.likes);
-                setName(response.data.partnerName[0].name);
+                setLikeCount(response.data?.foodItems?.likes);
+                setName(response.data?.partnerName[0]?.name);
                 setLoading(false);
                 console.log(response.data);
             })
@@ -64,7 +64,7 @@ const Reels = () => {
     }, [videoData]);
 
     const handleLike = (id) => {
-        axios.post('http://localhost:3000/api/food/like', { foodId: id }, {
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/food/like`, { foodId: id }, {
             withCredentials: true
         })
             .then(res => {
@@ -79,12 +79,12 @@ const Reels = () => {
     };
 
     const handleSave = (id) => {
-        axios.post('http://localhost:3000/api/food/save', { foodId: id }, {
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/food/save`, { foodId: id }, {
             withCredentials: true
         })
-            .then(res =>{
-                 console.log(res.data)
-                 setSavedStatus(!savedStatus);
+            .then(res => {
+                console.log(res.data)
+                setSavedStatus(!savedStatus);
             })
             .catch(err => console.log(err));
     };

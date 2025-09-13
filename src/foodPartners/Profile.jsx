@@ -9,7 +9,7 @@ const Profile = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/partner/food-partner/${id}`, {
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/partner/food-partner/${id}`, {
       withCredentials: true
     })
       .then(res => {

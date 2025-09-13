@@ -5,33 +5,33 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const getCookie = (name) => {
-            const cookies = document.cookie.split('; ');
-            for (let cookie of cookies) {
-                const [key, value] = cookie.split('=');
-                if (key === name) return value;
-            }
-            return null;
-        };
+  useEffect(() => {
+    const getCookie = (name) => {
+      const cookies = document.cookie.split('; ');
+      for (let cookie of cookies) {
+        const [key, value] = cookie.split('=');
+        if (key === name) return value;
+      }
+      return null;
+    };
 
-        const token = getCookie('token');
-        if (token) {
-            localStorage.setItem('token', token);
-            console.log('Token saved to localStorage');
-        } else {
-            console.log('User is not logged in');
-            navigate('/user/login');
-        }
-    }, []);
+    const token = getCookie('token');
+    if (token) {
+      localStorage.setItem('token', token);
+      console.log('Token saved to localStorage');
+    } else {
+      console.log('User is not logged in');
+      navigate('/user/login');
+    }
+  }, []);
 
-    return (
-        <div className="home-container">
-            <Reels />
-        </div>
-    );
+  return (
+    <div className="home-container">
+      <Reels />
+    </div>
+  );
 };
 
 export default Home;

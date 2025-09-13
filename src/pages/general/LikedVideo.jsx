@@ -8,7 +8,7 @@ const LikedVideo = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/food/liked', {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/food/liked`, {
             withCredentials: true
         })
             .then(response => {

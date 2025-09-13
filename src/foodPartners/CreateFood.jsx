@@ -17,7 +17,7 @@ const CreateFood = () => {
         formData.append('description', description);
         formData.append('video', video);
 
-        axios.post('http://localhost:3000/api/food/', formData, {
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/food/`, formData, {
             withCredentials: true
         })
             .then(response => {

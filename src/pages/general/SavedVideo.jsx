@@ -8,7 +8,7 @@ const SavedVideo = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/food/saved', {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/food/saved`, {
             withCredentials: true
         })
             .then(response => {

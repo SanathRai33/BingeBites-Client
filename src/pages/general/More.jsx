@@ -8,7 +8,7 @@ const More = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        axios.get('http://localhost:3000/api/auth/user/logout',
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/user/logout`,
             { withCredentials: true })
             .then(response => {
                 console.log('Logout successful:', response.data);
