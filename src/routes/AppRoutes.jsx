@@ -10,6 +10,7 @@ import Profile from '../foodPartners/Profile'
 import CreateFood from '../foodPartners/CreateFood'
 import Collection from '../pages/general/Collections'
 import More from '../pages/general/More'
+import Terms from '../pages/general/Terms'
 
 const AppRoutes = () => {
     return (
@@ -24,6 +25,7 @@ const AppRoutes = () => {
             <Route path='/food-partner/create-food' element={<CreateFood/>}/>
             <Route path='/user/collection' element={<Collection/>}/>
             <Route path='/user/more' element={<More/>}/>
+            <Route path='/terms' element={<Terms/>}/>
         </Routes>
     )
 }

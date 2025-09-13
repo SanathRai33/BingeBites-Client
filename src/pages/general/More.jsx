@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/More.css';
-import { FaBookmark, FaFileAlt, FaHeart, FaSignOutAlt, FaUserAlt } from 'react-icons/fa';
+import { FaBookmark, FaExclamationCircle, FaFileAlt, FaHeart, FaSignOutAlt, FaUserAlt } from 'react-icons/fa';
 import axios from 'axios';
 
 const More = () => {
@@ -39,6 +39,12 @@ const More = () => {
 
             <div className="more-item" onClick={() => navigate('/terms')}>
                 <FaFileAlt style={{ width: '24px', height: '24px' }} /><span> Terms and Conditions</span>
+            </div>
+            <div className="more-item" onClick={() => navigate('/user/profile')}>
+                <FaUserAlt style={{ width: '24px', height: '24px' }} /><span> Profile</span>
+            </div>
+            <div className="more-item" onClick={() => navigate('/user/help')}>
+                <FaExclamationCircle style={{ width: '24px', height: '24px' }} /><span>Help Center</span>
             </div>
         </div>
     );
