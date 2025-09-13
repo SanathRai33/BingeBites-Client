@@ -11,6 +11,7 @@ import CreateFood from '../foodPartners/CreateFood'
 import Collection from '../pages/general/Collections'
 import More from '../pages/general/More'
 import Terms from '../pages/general/Terms'
+import HelpCenter from '../pages/general/HelpCenter'
 
 const AppRoutes = () => {
     return (
@@ -26,6 +27,7 @@ const AppRoutes = () => {
             <Route path='/user/collection' element={<Collection/>}/>
             <Route path='/user/more' element={<More/>}/>
             <Route path='/terms' element={<Terms/>}/>
+            <Route path='/user/help' element={<HelpCenter/>}/>
         </Routes>
     )
 }
