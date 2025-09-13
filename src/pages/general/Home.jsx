@@ -17,7 +17,7 @@ const Home = () => {
       return null;
     };
 
-    const token = getCookie('token');
+    const token = getCookie('_vercel_jwt');
     if (token) {
       localStorage.setItem('token', token);
       console.log('Token saved to localStorage');
