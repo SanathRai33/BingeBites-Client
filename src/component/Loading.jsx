@@ -2,7 +2,7 @@ import '../styles/Loading.css';
 
 const Loading = () => {
 
-    return (Array.from({ length: 3 }).map((_, index) => (
+    return (Array.from({ length: 1 }).map((_, index) => (
         <div className="video-item skeleton" key={index}>
             <div className="skeleton-video" />
             <div className="skeleton-overlay">
