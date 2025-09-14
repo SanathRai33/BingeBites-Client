@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/ProfileHome.css';
+import '../styles/PartnerHome.css';
 
 const PartnerHome = () => {
   const [name, setName] = useState('');
@@ -32,10 +32,7 @@ const PartnerHome = () => {
     formData.append('name', name);
     if (image) formData.append('image', image);
 
-    axios.put('http://localhost:3000/api/partner/profile', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
+    axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, formData, {
       withCredentials: true
     })
     .then(res => setMessage('Profile updated successfully'))
