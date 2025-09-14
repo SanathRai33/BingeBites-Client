@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: flex-end;
   background: #222;
+  animation: shimmer 1.5s infinite linear;
 }
 
 .skeleton-video {
@@ -26,20 +27,36 @@
   margin-bottom: 5vh;
 }
 
+.skeleton-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 2vh;
+  width: 80%;
+}
+
+.skeleton-avatar {
+  width: 50px;
+  height: 50px;
+  background: #555;
+  border-radius: 50%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-name {
+  width: 80%;
+  height: 40px;
+  background: #555;
+  border-radius: 10px;
+  animation: shimmer 1.5s infinite linear;
+}
+
 .skeleton-description {
   width: 80%;
   height: 20px;
   background: #444;
   margin-bottom: 2vh;
   border-radius: 4px;
-  animation: shimmer 1.5s infinite linear;
-}
-
-.skeleton-button {
-  width: 40%;
-  height: 40px;
-  background: #555;
-  border-radius: 20px;
   animation: shimmer 1.5s infinite linear;
 }
 
@@ -55,7 +72,7 @@
 
 .skeleton-video,
 .skeleton-description,
-.skeleton-button {
+.skeleton-name {
   background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
   background-size: 1000px 100%;
 }
@@ -67,8 +84,7 @@
     height: 16px;
   }
 
-  .skeleton-button {
-    width: 60%;
+  .skeleton-name {
     height: 36px;
   }
 }
@@ -79,8 +95,7 @@
     height: 18px;
   }
 
-  .skeleton-button {
-    width: 50%;
+  .skeleton-name {
     height: 38px;
   }
 }
