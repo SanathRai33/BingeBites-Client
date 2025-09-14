@@ -23,7 +23,7 @@ const More = () => {
 
     return (
         <div className="more-container">
-            <div className="head" onClick={() => navigate('/home')}>
+            <div className="head" onClick={() => navigate('/')}>
                 <FaArrowLeft style={{ width: '24px', height: '24px',  borderRadius: '50%', padding: '5px' }} />
             <h1>User information</h1>
             </div>
