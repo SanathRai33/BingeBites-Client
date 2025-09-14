@@ -24,24 +24,21 @@
 
 .reel-overlay {
   position: absolute;
-  bottom: 0;
+  bottom: 8%;
   left: 0;
   right: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: end;
   align-items: flex-end;
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  height: 50%;
 }
 
 .reel-info {
-  padding: 0 20px;
+  padding: 5px 20px;
   display: flex;
   flex-direction: column;
-  height: 300px;
   width: 100%;
-  flex: 1;
 }
 
 .store-link {
