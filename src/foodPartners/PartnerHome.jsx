@@ -1,11 +1,69 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../styles/ProfileHome.css';
 
 const PartnerHome = () => {
-  return (
-    <div>
-      Home of Partner
-    </div>
-  )
-}
+  const [name, setName] = useState('');
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState('');
+  const [message, setMessage] = useState('');
 
-export default PartnerHome
+  useEffect(() => {
+    // Fetch current profile details
+    axios.get('http://localhost:3000/api/partner/profile', { withCredentials: true })
+      .then(res => {
+        setName(res.data.name);
+        setPreview(res.data.image);
+      })
+      .catch(err => console.error('Error fetching profile:', err));
+  }, []);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', name);
+    if (image) formData.append('image', image);
+
+    axios.put('http://localhost:3000/api/partner/profile', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      withCredentials: true
+    })
+    .then(res => setMessage('Profile updated successfully'))
+    .catch(err => setMessage('Error updating profile'));
+  };
+
+  return (
+    <div className="profile-container">
+      <h2>Partner Profile</h2>
+      <form onSubmit={handleSubmit} className="profile-form">
+        <div className="profile-image-section">
+          <img src={preview || '/default-avatar.png'} alt="Profile" className="profile-image" />
+          <input type="file" accept="image/*" onChange={handleImageChange} />
+        </div>
+        <div className="profile-field">
+          <label>Business Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="update-btn">Update Profile</button>
+        {message && <p className="message">{message}</p>}
+      </form>
+    </div>
+  );
+};
+
+export default PartnerHome;
