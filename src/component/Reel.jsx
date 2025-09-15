@@ -29,7 +29,9 @@ const Reels = () => {
                 console.log(response.data);
             })
             .catch(error => {
+                console.error("Error status:", error.response?.status || error.code);
                 console.error('There was an error fetching the food items!', error);
+                setLoading(false);
             });
     }, []);
 
