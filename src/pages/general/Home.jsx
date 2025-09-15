@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Reels from '../../component/Reel';
 import '../../styles/Home.css';
 
 const Home = () => {
 
+      const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/auth/user/profile', {
+            withCredentials: true
+        })
+        .then(response => {
+        })
+        .catch(error => {
+            if (error.response && error.response.status === 401) {
+                navigate('/user/login');
+            } else {
+                console.error("Error fetching profile:", error);
+            }
+        });
+    }, [navigate]);
 
   return (
     <div className="home-container">
