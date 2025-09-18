@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaHeart, FaBookmark, FaEllipsisV, FaUser } from 'react-icons/fa';
+import { FaHome, FaUser } from 'react-icons/fa';
 import '../styles/BottomNav.css';
 
 const BottomNav = () => {
@@ -12,7 +12,7 @@ const BottomNav = () => {
       </Link>
       <Link to="/user/more" className="nav-item" aria-label="Partner">
         <FaUser />
-        <span>Partner</span>
+        <span>Profile</span>
       </Link>
     </nav>
   );

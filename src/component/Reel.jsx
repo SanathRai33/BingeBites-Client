@@ -140,16 +140,6 @@ const Reels = () => {
                                 <div className="video-description">{video.description}</div>
                             </div>
                         </div>
-                        <div className="navigation">
-                            <Link to="/">
-                                <FaHome style={{ height: '30px', width: '30px', color: 'white' }} />
-                                <p>Home</p>
-                            </Link>
-                            <Link to="/user/more">
-                                <FaEllipsisV style={{ height: '30px', width: '30px', color: 'white' }} />
-                                <p>More</p>
-                            </Link>
-                        </div>
                     </div>
                 ))
             )}
