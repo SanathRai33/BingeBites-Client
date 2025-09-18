@@ -19,7 +19,7 @@ const Home = () => {
     })
     .catch(error => {
       if (error.response && error.response.status === 401) {
-        navigate('/user/login');
+        // navigate('/user/login');
         console.log("status code", error.response.status);
       } else {
         console.error("Error fetching profile:", error);

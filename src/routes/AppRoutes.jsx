@@ -1,5 +1,7 @@
+// ...existing code...
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import MainLayout from '../layouts/MainLayout'
 import UserRegister from '../pages/auth/UserRegister'
 import UserLogin from '../pages/auth/UserLogin'
 import FoodPartnerRegister from '../pages/auth/FoodPartnerRegister'
@@ -14,6 +16,7 @@ import HelpCenter from '../pages/general/HelpCenter'
 import LikedVideo from '../pages/general/LikedVideo'
 import SavedVideo from '../pages/general/SavedVideo'
 import NotFound from '../pages/general/NotFound'
+// ...existing code...
 
 const AppRoutes = () => {
     return (
@@ -22,18 +25,23 @@ const AppRoutes = () => {
             <Route path="/user/login" element={<UserLogin />} />
             <Route path="/food-partner/register" element={<FoodPartnerRegister />} />
             <Route path="/food-partner/login" element={<FoodPartnerLogin />} />
-            <Route path='/' element={<Home/>}/>
-            <Route path='/foodPartner' element={<PartnerHome/>}/>
-            <Route path='/food-partner/:id' element={<Profile/>}/>
-            <Route path='/food-partner/create-food' element={<CreateFood/>}/>
-            <Route path='/user/liked' element={<LikedVideo/>}/>
-            <Route path='/user/saved' element={<SavedVideo/>}/>
-            <Route path='/user/more' element={<More/>}/>
-            <Route path='/terms' element={<Terms/>}/>
-            <Route path='/user/help' element={<HelpCenter/>}/>
+
+            <Route element={<MainLayout />}>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/foodPartner' element={<PartnerHome/>}/>
+                <Route path='/food-partner/:id' element={<Profile/>}/>
+                <Route path='/food-partner/create-food' element={<CreateFood/>}/>
+                <Route path='/user/liked' element={<LikedVideo/>}/>
+                <Route path='/user/saved' element={<SavedVideo/>}/>
+                <Route path='/user/more' element={<More/>}/>
+                <Route path='/terms' element={<Terms/>}/>
+                <Route path='/user/help' element={<HelpCenter/>}/>
+            </Route>
+
             <Route path='*' element={<NotFound/>} />
         </Routes>
     )
 }
 
 export default AppRoutes
+// ...existing code...
