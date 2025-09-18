@@ -1,11 +1,17 @@
 @import './vars.css';
 
 .reels-container {
+  /* height: calc(100vh - 60px); */
   height: 100vh;
   width: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   background: var(--bg);
+  position: relative;
+  bottom: 60px; 
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  background-color: aqua;
 }
 
 .reel-item {
