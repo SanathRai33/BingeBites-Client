@@ -66,7 +66,7 @@ export default function UserProfile() {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:3000/api/auth/logout', {}, { withCredentials: true })
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {}, { withCredentials: true })
     } catch (err) {
       // ignore
     }
@@ -93,7 +93,7 @@ export default function UserProfile() {
           <div className="avatar-wrap">
             <img
               src={user?.avatar || 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D'}
-              alt={user?.name || 'User avatar'}
+              alt={user?.fullName || 'User avatar'}
               className="avatar"
             />
           </div>
