@@ -16,7 +16,7 @@ import HelpCenter from '../pages/general/HelpCenter'
 import LikedVideo from '../pages/general/LikedVideo'
 import SavedVideo from '../pages/general/SavedVideo'
 import NotFound from '../pages/general/NotFound'
-// ...existing code...
+import UserProfile from '../pages/general/UserProfile'
 
 const AppRoutes = () => {
     return (
@@ -30,6 +30,7 @@ const AppRoutes = () => {
                 <Route path='/' element={<Home/>}/>
                 <Route path='/foodPartner' element={<PartnerHome/>}/>
                 <Route path='/food-partner/:id' element={<Profile/>}/>
+                <Route path='/user/profile/:id' element={<UserProfile/>}/>
                 <Route path='/food-partner/create-food' element={<CreateFood/>}/>
                 <Route path='/user/liked' element={<LikedVideo/>}/>
                 <Route path='/user/saved' element={<SavedVideo/>}/>
