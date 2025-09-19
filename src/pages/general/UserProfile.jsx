@@ -1,4 +1,3 @@
-// UserProfile.jsx
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -20,18 +19,17 @@ export default function UserProfile() {
       .then((res) => {
         if (!mounted) return
         console.log(res)
-        setUser(res.data.user || res.data) // adapt to your API response
+        setUser(res.data)
         setForm({
-          fullName: res.data.user?.fullName || res.data.fullName || '',
-          phone: res.data.user?.phone || res.data.phone || '',
-          email: res.data.user?.email || res.data.email || '',
-          address: res.data.user?.address || res.data.address || ''
+          fullName: res.data?.fullName || '',
+          phone: res.data?.phone || '',
+          email: res.data?.email || '',
+          address: res.data?.address || ''
         })
       })
       .catch((err) => {
-        // if unauthorized, redirect to login
         if (err.response?.status === 401) {
-          //   navigate('/user/login')
+            navigate('/user/login')
         } else {
           setError('Failed to load profile')
           console.error(err)
@@ -69,7 +67,7 @@ export default function UserProfile() {
     try {
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {}, { withCredentials: true })
     } catch (err) {
-      // ignore
+      console.error(err)
     }
     navigate('/user/login')
   }
