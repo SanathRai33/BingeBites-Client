@@ -16,7 +16,7 @@ export default function UserProfile() {
     let mounted = true
     setLoading(true)
     axios
-      .get('http://localhost:3000/api/auth/user/profile', { withCredentials: true })
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/user/profile`, { withCredentials: true })
       .then((res) => {
         if (!mounted) return
         setUser(res.data.user || res.data) // adapt to your API response
@@ -53,7 +53,7 @@ export default function UserProfile() {
     setError(null)
     try {
       const res = await axios.put(
-        'http://localhost:3000/api/auth/user/profile',
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/user/profile`,
         { name: form.name, phone: form.phone, address: form.address },
         { withCredentials: true }
       )
