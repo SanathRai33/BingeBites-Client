@@ -9,19 +9,20 @@ export default function UserProfile() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [editing, setEditing] = useState(false)
-  const [form, setForm] = useState({ name: '', phone: '', email: '', address: '' })
+  const [form, setForm] = useState({ fullName: '', phone: '', email: '', address: '' })
   const [error, setError] = useState(null)
 
   useEffect(() => {
     let mounted = true
     setLoading(true)
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/user/profile`, { withCredentials: true })
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/user/profile`, { withCredentials: true })
       .then((res) => {
         if (!mounted) return
+        console.log(res)
         setUser(res.data.user || res.data) // adapt to your API response
         setForm({
-          name: res.data.user?.name || res.data.name || '',
+          fullName: res.data.user?.fullName || res.data.fullName || '',
           phone: res.data.user?.phone || res.data.phone || '',
           email: res.data.user?.email || res.data.email || '',
           address: res.data.user?.address || res.data.address || ''
@@ -30,7 +31,7 @@ export default function UserProfile() {
       .catch((err) => {
         // if unauthorized, redirect to login
         if (err.response?.status === 401) {
-        //   navigate('/user/login')
+          //   navigate('/user/login')
         } else {
           setError('Failed to load profile')
           console.error(err)
@@ -53,8 +54,8 @@ export default function UserProfile() {
     setError(null)
     try {
       const res = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/auth/user/profile`,
-        { name: form.name, phone: form.phone, address: form.address },
+        `${import.meta.env.VITE_BACKEND_URL}/api/user/profile`,
+        { fullName: form.fullName, phone: form.phone, address: form.address },
         { withCredentials: true }
       )
       setUser(res.data.user || res.data)
@@ -98,7 +99,7 @@ export default function UserProfile() {
             />
           </div>
           <div className="profile-info">
-            <h3 className="name">{user?.name || 'No name'}</h3>
+            <h3 className="name">{user?.fullName || 'No fullName'}</h3>
             <p className="muted small">{user?.email}</p>
             <p className="muted tiny">{user?.phone}</p>
           </div>
@@ -131,7 +132,7 @@ export default function UserProfile() {
             {error && <div className="error">{error}</div>}
 
             <label className="form-label">Name</label>
-            <input className="form-input" name="name" value={form.name} onChange={handleChange} />
+            <input className="form-input" name="fullName" value={form.fullName} onChange={handleChange} />
 
             <label className="form-label">Phone</label>
             <input className="form-input" name="phone" value={form.phone} onChange={handleChange} />
