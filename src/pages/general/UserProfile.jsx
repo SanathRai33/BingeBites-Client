@@ -19,12 +19,12 @@ export default function UserProfile() {
       .then((res) => {
         if (!mounted) return
         console.log(res)
-        setUser(res.data)
+        setUser(res.data?.user)
         setForm({
-          fullName: res.data?.fullName || '',
-          phone: res.data?.phone || '',
-          email: res.data?.email || '',
-          address: res.data?.address || ''
+          fullName: res.data?.user?.fullName || '',
+          phone: res.data?.user?.phone || '',
+          email: res.data?.user?.email || '',
+          address: res.data?.user?.address || ''
         })
       })
       .catch((err) => {
@@ -56,7 +56,7 @@ export default function UserProfile() {
         { fullName: form.fullName, phone: form.phone, address: form.address },
         { withCredentials: true }
       )
-      setUser(res.data.user || res.data)
+      setUser(res.data?.user)
       setEditing(false)
     } catch (err) {
       setError(err.response?.data?.message || 'Update failed')
