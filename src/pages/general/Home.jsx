@@ -3,16 +3,17 @@ import { useNavigate } from "react-router-dom";
 import Reels from "../../component/Reel";
 import "../../styles/Home.css";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser, removeUser } from "../../redux/Slices/authSlice";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/user/profile`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/user/profile`, {
         withCredentials: true,
       })
       .then((response) => {
