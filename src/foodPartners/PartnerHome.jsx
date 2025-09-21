@@ -9,8 +9,7 @@ const PartnerHome = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Fetch current profile details
-    axios.get('http://localhost:3000/api/partner/profile', { withCredentials: true })
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, { withCredentials: true })
       .then(res => {
         setName(res.data.name);
         setPreview(res.data.image);

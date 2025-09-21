@@ -65,7 +65,7 @@ export default function UserProfile() {
 
   const handleLogout = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {}, { withCredentials: true })
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/user/logout`, {}, { withCredentials: true })
     } catch (err) {
       console.error(err)
     }
