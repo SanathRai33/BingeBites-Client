@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: null, // no user when not logged in
+  user: null,
+  isLoading: true,
 };
 
 const authSlice = createSlice({
@@ -14,9 +15,14 @@ const authSlice = createSlice({
         name: action.payload.name,
         email: action.payload.email,
       };
+      state.isLoading = false;
     },
     removeUser: (state) => {
       state.user = null;
+      state.isLoading = false;
+    },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
     },
   },
 });
