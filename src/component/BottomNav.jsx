@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import { FaHome, FaUser } from 'react-icons/fa';
 import '../styles/BottomNav.css';
 
-const BottomNav = () => {
+const BottomNav = ({user}) => {
 
-  const user = {
-    _id: '12345',
-    name: 'John Doe'
-  }
+  console.log('user in bottom nav', user);
 
   return (
     <nav className="bb-bottom-nav">
@@ -16,7 +13,7 @@ const BottomNav = () => {
         <FaHome />
         <span>Home</span>
       </Link>
-      <Link to={`/user/profile/${user._id}`} className="nav-item" aria-label="Partner">
+      <Link to={user ? `/user/profile/${user._id}` : '/user/login'}  className="nav-item" aria-label="Partner">
         <FaUser />
         <span>Profile</span>
       </Link>

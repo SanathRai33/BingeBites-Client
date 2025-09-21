@@ -7,6 +7,7 @@ const MainLayout = () => {
   const { pathname } = useLocation();
 
   const user = useSelector((state) => state.auth.user);
+  console.log('user in main layout', user);
 
   const hideOn = [
     '/user/login',
