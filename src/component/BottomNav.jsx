@@ -1,24 +1,27 @@
-const MainLayout = () => {
-  const { pathname } = useLocation();
-  const { user, isLoading } = useSelector((state) => state.auth);
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaHome, FaUser } from 'react-icons/fa';
+import '../styles/BottomNav.css';
+import { useSelector } from 'react-redux';
 
-  const hideOn = [
-    '/user/login',
-    '/user/register',
-    '/food-partner/login',
-    '/food-partner/register'
-  ];
+const BottomNav = () => {
+  
+  const user = useSelector((state) => state.auth.user);
 
-  const hide = hideOn.includes(pathname);
-
-  if (isLoading && !hide) {
-    return <div>Loading...</div>;
-  }
+  console.log("USerdata nav", user)
 
   return (
-    <>
-      <Outlet />
-      {!hide && <BottomNav user={user} />}
-    </>
+    <nav className="bb-bottom-nav">
+      <Link to="/" className="nav-item" aria-label="Home">
+        <FaHome />
+        <span>Home</span>
+      </Link>
+      <Link to={user ? `/user/profile/${user._id}` : '/user/login'}  className="nav-item" aria-label="Partner">
+        <FaUser />
+        <span>Profile</span>
+      </Link>
+    </nav>
   );
 };
+
+export default BottomNav;

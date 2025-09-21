@@ -6,9 +6,6 @@ import { useSelector } from 'react-redux';
 const MainLayout = () => {
   const { pathname } = useLocation();
 
-  const user = useSelector((state) => state.auth.user);
-  console.log('user in main layout', user);
-
   const hideOn = [
     '/user/login',
     '/user/register',
@@ -21,7 +18,7 @@ const MainLayout = () => {
   return (
     <>
       <Outlet />
-      {!hide && <BottomNav user={user} />}
+      {!hide && <BottomNav />}
     </>
   );
 };
