@@ -16,7 +16,7 @@ const BottomNav = () => {
         <FaHome />
         <span>Home</span>
       </Link>
-      <Link to={user ? `/user/profile/${user._id}` : '/user/login'}  className="nav-item" aria-label="Partner">
+      <Link to={user ? `/user/profile/${user.id}` : '/user/login'}  className="nav-item" aria-label="Partner">
         <FaUser />
         <span>Profile</span>
       </Link>

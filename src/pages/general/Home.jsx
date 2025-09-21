@@ -11,6 +11,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
+  console.log("User from home",user)
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/user/profile`, {
