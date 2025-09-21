@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Reels.css';
 import Loading from './Loading';
-import { FaHeart, FaBookmark, FaRegComment } from 'react-icons/fa';
+import { FaHeart, FaBookmark, FaRegComment, FaHome, FaGripVertical, FaEllipsisV } from 'react-icons/fa';
 
 const Reels = () => {
     const [videoData, setVideoData] = useState([]);

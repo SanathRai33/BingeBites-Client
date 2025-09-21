@@ -1,13 +1,11 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import BottomNav from '../component/BottomNav';
-import { useSelector } from 'react-redux';
 
 const MainLayout = () => {
   const { pathname } = useLocation();
 
-  const user = useSelector((state) => state.auth.user);
-
+  // exact auth paths to hide the bottom nav
   const hideOn = [
     '/user/login',
     '/user/register',
@@ -20,7 +18,7 @@ const MainLayout = () => {
   return (
     <>
       <Outlet />
-      {!hide && <BottomNav user={user} />}
+      {!hide && <BottomNav />}
     </>
   );
 };

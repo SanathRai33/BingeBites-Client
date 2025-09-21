@@ -10,7 +10,7 @@ const BottomNav = () => {
         <FaHome />
         <span>Home</span>
       </Link>
-      <Link to={`/user/profile/${user._id}`} className="nav-item" aria-label="Partner">
+      <Link to={`/user/more`} className="nav-item" aria-label="Partner">
         <FaUser />
         <span>Profile</span>
       </Link>
