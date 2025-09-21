@@ -4,6 +4,12 @@ import { FaHome, FaUser } from 'react-icons/fa';
 import '../styles/BottomNav.css';
 
 const BottomNav = () => {
+
+  const user = {
+    _id: '12345',
+    name: 'John Doe'
+  }
+
   return (
     <nav className="bb-bottom-nav">
       <Link to="/" className="nav-item" aria-label="Home">
