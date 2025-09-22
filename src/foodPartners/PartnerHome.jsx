@@ -12,9 +12,11 @@ const PartnerHome = () => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, { withCredentials: true })
       .then(res => {
         const partner = res.data?.partner;
+        console.log("object", res.data)
+        console.log("Partner",partner)
         if (partner) {
-          setName(partner.name || '');
-          setPreview(partner.image || '');
+          setName(partner?.name || '');
+          setPreview(partner?.image || '');
         } else {
           console.warn('No partner in response', res.data);
         }
