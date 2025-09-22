@@ -11,11 +11,15 @@ const PartnerHome = () => {
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, { withCredentials: true })
       .then(res => {
-        setName(res?.partner?.name);
-        setPreview(res?.partner?.image);
-        console.log("Partner Data", res?.partner)
+        const partner = res.data?.partner;
+        if (partner) {
+          setName(partner.name || '');
+          setPreview(partner.image || '');
+        } else {
+          console.warn('No partner in response', res.data);
+        }
       })
-      .catch(err => console.error('Error fetching profile:', err));
+      .catch(err => console.error('Error fetching profile:', err.response?.data || err.message));
   }, []);
 
   const handleImageChange = (e) => {
@@ -35,8 +39,19 @@ const PartnerHome = () => {
     axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, formData, {
       withCredentials: true
     })
-      .then(res => setMessage('Profile updated successfully'))
-      .catch(err => setMessage('Error updating profile'));
+      .then(res => {
+        setMessage(res.data?.message || 'Profile updated successfully');
+        // update local preview/name if server returned updated partner
+        const partner = res.data?.partner;
+        if (partner) {
+          setName(partner.name || '');
+          setPreview(partner.image || '');
+        }
+      })
+      .catch(err => {
+        console.error('Error updating profile:', err.response?.data || err.message);
+        setMessage('Error updating profile');
+      });
   };
 
   return (
