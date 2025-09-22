@@ -11,9 +11,9 @@ const PartnerHome = () => {
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, { withCredentials: true })
       .then(res => {
-        setName(res?.data?.name);
-        setPreview(res?.data?.image);
-        console.log("Partner Data", res?.data)
+        setName(res?.partner?.name);
+        setPreview(res?.partner?.image);
+        console.log("Partner Data", res?.partner)
       })
       .catch(err => console.error('Error fetching profile:', err));
   }, []);
