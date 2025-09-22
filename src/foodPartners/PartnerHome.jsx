@@ -11,8 +11,8 @@ const PartnerHome = () => {
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, { withCredentials: true })
       .then(res => {
-        setName(res.data.name);
-        setPreview(res.data.image);
+        setName(res?.data?.name);
+        setPreview(res?.data?.image);
       })
       .catch(err => console.error('Error fetching profile:', err));
   }, []);
@@ -34,8 +34,8 @@ const PartnerHome = () => {
     axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, formData, {
       withCredentials: true
     })
-    .then(res => setMessage('Profile updated successfully'))
-    .catch(err => setMessage('Error updating profile'));
+      .then(res => setMessage('Profile updated successfully'))
+      .catch(err => setMessage('Error updating profile'));
   };
 
   return (
