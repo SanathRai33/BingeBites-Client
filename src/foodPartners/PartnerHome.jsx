@@ -13,6 +13,7 @@ const PartnerHome = () => {
       .then(res => {
         setName(res?.data?.name);
         setPreview(res?.data?.image);
+        console.log(res?.data)
       })
       .catch(err => console.error('Error fetching profile:', err));
   }, []);
