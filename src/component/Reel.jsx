@@ -131,7 +131,7 @@ const Reels = () => {
                                 <Link to={`/food-partner/${video.foodPartner}`} className="store-link">
                                     <div className="store-info">
                                         <div className="store-avatar">
-                                            <img src="https://img.freepik.com/premium-vector/tasty-food-chef-logo-mascot-template_190190-133.jpg?w=360" alt="logo" />
+                                            <img src={video.image} alt="logo" />
                                         </div>
                                         <div className="store-name">@{name}</div>
                                     </div>
