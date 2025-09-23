@@ -8,6 +8,7 @@ import { FaHeart, FaBookmark, FaRegComment } from 'react-icons/fa';
 const Reels = () => {
     const [videoData, setVideoData] = useState([]);
     const [name, setName] = useState("");
+    const [logo, setLogo] = useState("");
     const [loading, setLoading] = useState(true);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
     const [likeCount, setLikeCount] = useState(0);
@@ -25,6 +26,7 @@ const Reels = () => {
                 setVideoData(response.data.foodItems);
                 setLikeCount(response.data?.foodItems?.likes);
                 setName(response.data?.partnerName[0]?.name);
+                setLogo(response.data?.partnerName[0]?.image)
                 setLoading(false);
                 console.log(response.data);
             })
@@ -131,7 +133,7 @@ const Reels = () => {
                                 <Link to={`/food-partner/${video.foodPartner}`} className="store-link">
                                     <div className="store-info">
                                         <div className="store-avatar">
-                                            <img src={video.image} alt="logo" />
+                                            <img src={image} alt="logo" />
                                         </div>
                                         <div className="store-name">@{name}</div>
                                     </div>
