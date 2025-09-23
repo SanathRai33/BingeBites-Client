@@ -9,7 +9,7 @@
   color: var(--text);
 }
 
-.profile-form {
+.profile-form, .profile-div {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -50,6 +50,44 @@
   border-radius: 8px;
   outline: none;
   font-size: 16px;
+}
+
+.profile-field .buss-name{
+  width: 202px;
+  height: 43px;
+  padding: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  background-color: rgb(124, 127, 129);
+  color: black;
+}
+
+.profile-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-outline {
+  background-color: #1d3a5c;
+  color: #cbd5e1;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+    flex: 1;
+    font-weight: bold;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0;
 }
 
 .update-btn {

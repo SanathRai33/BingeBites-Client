@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/PartnerHome.css';
 
@@ -7,6 +8,9 @@ const PartnerHome = () => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState('');
   const [message, setMessage] = useState('');
+  const [mode, setMoode] = useState('view')
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile`, { withCredentials: true })
@@ -40,7 +44,6 @@ const PartnerHome = () => {
     })
       .then(res => {
         setMessage(res.data?.message || 'Profile updated successfully');
-        // update local preview/name if server returned updated partner
         const partner = res.data?.partner;
         if (partner) {
           setName(partner.name || '');
@@ -51,28 +54,47 @@ const PartnerHome = () => {
         console.error('Error updating profile:', err.response?.data || err.message);
         setMessage('Error updating profile');
       });
+      setMoode('view')
   };
 
   return (
     <div className="profile-container">
       <h2>Partner Profile</h2>
-      <form onSubmit={handleSubmit} className="profile-form">
-        <div className="profile-image-section">
-          <img src={preview || '/default-avatar.png'} alt="Profile" className="profile-image" />
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-        </div>
-        <div className="profile-field">
-          <label>Business Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="update-btn">Update Profile</button>
-        {message && <p className="message">{message}</p>}
-      </form>
+      {mode === 'view' ?
+        (
+          <div className="profile-div">
+            <div className="profile-image-section">
+              <img src={preview || '/default-avatar.png'} alt="Profile" className="profile-image" />
+            </div>
+            <div className="profile-field">
+              <label>Business Name</label>
+              <p className='buss-name' >{name}</p>
+            </div>
+            <div className="profile-btns">
+              <button className='btn-outline' onClick={()=> setMoode('edit')}>Edit Profile</button>
+              <button className='btn-primary' onClick={()=> navigate('/food-partner/create-food')}>Add Food</button>
+            </div>
+          </div>
+        ) :
+        (
+          <form onSubmit={handleSubmit} className="profile-form">
+            <div className="profile-image-section">
+              <img src={preview || '/default-avatar.png'} alt="Profile" className="profile-image" />
+              <input type="file" accept="image/*" onChange={handleImageChange} />
+            </div>
+            <div className="profile-field">
+              <label>Business Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="update-btn">Update Profile</button>
+            {message && <p className="message">{message}</p>}
+          </form>
+        )}
     </div>
   );
 };
