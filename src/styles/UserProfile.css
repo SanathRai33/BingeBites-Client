@@ -30,6 +30,28 @@
   border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
+.menu{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  align-self: flex-end;
+}
+
+.menubar-content{
+  background-color: #cbd5e1;
+  display: flex;
+  padding: 2px 15px;
+  margin-right: 30px;
+  border-radius: 8px;
+}
+
+.profile-more-btn button{
+  color: var(--muted);
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
 .profile-top {
   display: flex;
   gap: 12px;

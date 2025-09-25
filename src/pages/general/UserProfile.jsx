@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../../styles/UserProfile.css'
+import { FaEllipsisV } from 'react-icons/fa'
+import * as Menubar from "@radix-ui/react-menubar";
 
 export default function UserProfile() {
   const navigate = useNavigate()
@@ -29,7 +31,7 @@ export default function UserProfile() {
       })
       .catch((err) => {
         if (err.response?.status === 401) {
-            navigate('/user/login')
+          navigate('/user/login')
         } else {
           setError('Failed to load profile')
           console.error(err)
@@ -88,6 +90,19 @@ export default function UserProfile() {
   return (
     <div className="profile-root">
       <div className="profile-card">
+        <div className="profile-more-btn">
+          <Menubar.Root className='menu'>
+            <Menubar.Menu>
+              <Menubar.Trigger className="menubar-trigger">
+                <button aria-label="More options" className="more-btn">
+                  <FaEllipsisV size={16} />
+                </button></Menubar.Trigger>
+              <Menubar.Content className="menubar-content">
+                <Menubar.Item  onClick={() => navigate('/user/more')} >More</Menubar.Item>
+              </Menubar.Content>
+            </Menubar.Menu>
+          </Menubar.Root>
+        </div>
         <div className="profile-top">
           <div className="avatar-wrap">
             <img
