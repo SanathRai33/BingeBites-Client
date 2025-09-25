@@ -133,7 +133,7 @@ const Reels = () => {
                                 <Link to={`/food-partner/${video.foodPartner}`} className="store-link">
                                     <div className="store-info">
                                         <div className="store-avatar">
-                                            <img src={image? image : ''} alt="logo" />
+                                            {image ? <img src={image} alt="logo" /> : <img src={''} alt="logo" />}
                                         </div>
                                         <div className="store-name">@{name}</div>
                                     </div>
