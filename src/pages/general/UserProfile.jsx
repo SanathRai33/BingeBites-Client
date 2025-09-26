@@ -60,6 +60,7 @@ export default function UserProfile() {
       )
       setUser(res.data?.user)
       setEditing(false)
+      console.log(res?.data?.message)
     } catch (err) {
       setError(err.response?.data?.message || 'Update failed')
     }
