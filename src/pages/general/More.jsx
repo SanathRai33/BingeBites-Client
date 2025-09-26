@@ -43,9 +43,6 @@ const More = () => {
             <div className="more-item" onClick={() => navigate('/terms')}>
                 <FaFileAlt style={{ width: '24px', height: '24px' }} /><span> Terms and Conditions</span>
             </div>
-            <div className="more-item" onClick={() => navigate('/user/profile')}>
-                <FaUserAlt style={{ width: '24px', height: '24px' }} /><span> Profile</span>
-            </div>
             <div className="more-item" onClick={() => navigate('/user/help')}>
                 <FaExclamationCircle style={{ width: '24px', height: '24px' }} /><span>Help Center</span>
             </div>

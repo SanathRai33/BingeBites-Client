@@ -129,8 +129,8 @@ export default function UserProfile() {
 
         {!editing && (
           <div className="profile-details">
-            {/* <h4>About</h4>
-            <p className="detail-item">{user?.address || 'No address provided'}</p> */}
+            <h4>About</h4>
+            <p className="detail-item">{user?.address || 'No address provided'}</p>
 
             <h4>Preferences</h4>
             <div className="prefs">
@@ -148,16 +148,16 @@ export default function UserProfile() {
             <input className="form-input" name="fullName" value={form.fullName} onChange={handleChange} />
 
             <label className="form-label">Phone</label>
-            <input className="form-input" name="phone" value={form.phone} onChange={handleChange} />
+            <input className="form-input" name="phone" value={form.phone} onChange={handleChange} required />
 
             <label className="form-label">Email (readonly)</label>
             <input className="form-input" name="email" value={form.email} readOnly />
 
             <label className="form-label">Address</label>
-            <input className="form-input" name="address" value={form.address} onChange={handleChange} />
+            <input className="form-input" name="address" value={form.address} onChange={handleChange} required />
 
             <div className="form-row">
-              <button className="btn-primary" type="submit">
+              <button className="btn-primary" type="submit" >
                 Save changes
               </button>
               <button type="button" className="btn-outline" onClick={() => setEditing(false)}>
