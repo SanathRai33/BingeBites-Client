@@ -73,6 +73,7 @@
   max-height: 32px;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: none;
 }
 
 .modern-order-btn {
@@ -103,7 +104,7 @@
 .reel-modern-actions {
   position: absolute;
   right: 18px;
-  bottom: 220px;
+  bottom: 200px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -150,7 +151,7 @@
   .food-modern-title { font-size: 13px; }
   .reel-modern-actions {
     right: 12px;
-    bottom: 90px;
+    bottom: 200px;
     gap: 17px;
   }
   .modern-action-btn { padding: 7px 7px 6px 7px; }
