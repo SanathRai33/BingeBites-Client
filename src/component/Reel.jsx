@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Reels.css';
 import Loading from './Loading';
@@ -98,6 +98,10 @@ const Reels = () => {
         console.log('Comment on video:', id);
     };
 
+    const handleOrder = () => {
+        Navigate
+    }
+
     return (
         <div className="reels-modern-container" ref={containerRef}>
             {loading ? (
@@ -123,10 +127,13 @@ const Reels = () => {
                                 </div>
                             </div>
                             <div className="food-modern-desc">{video.description}</div>
-                            <button className="modern-order-btn">
-                                <span><FaShoppingCart /> Order Now</span>
-                                <span><FaAngleRight /></span>
-                            </button>
+
+                            <Link to={`/user/order/${video.foodPartner}`}>
+                                <button className="modern-order-btn" onClick={handleOrder}>
+                                    <span><FaShoppingCart /> Order Now</span>
+                                    <span><FaAngleRight /></span>
+                                </button>
+                            </Link>
                         </div>
                         <div className="reel-modern-actions">
                             <div className="modern-action-btn" onClick={() => handleLike(video._id)}>

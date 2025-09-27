@@ -17,6 +17,7 @@ import LikedVideo from '../pages/general/LikedVideo'
 import SavedVideo from '../pages/general/SavedVideo'
 import NotFound from '../pages/general/NotFound'
 import UserProfile from '../pages/general/UserProfile'
+import Order from '../pages/user/Order'
 
 const AppRoutes = () => {
     return (
@@ -37,6 +38,7 @@ const AppRoutes = () => {
                 <Route path='/user/more' element={<More/>}/>
                 <Route path='/terms' element={<Terms/>}/>
                 <Route path='/user/help' element={<HelpCenter/>}/>
+                <Route path='/user/order/:id' element={<Order/>} />
             </Route>
 
             <Route path='*' element={<NotFound/>} />
