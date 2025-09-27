@@ -25,7 +25,7 @@ const Home = () => {
       .catch((error) => {
         if (error.response && error.response.status === 401) {
           dispatch(removeUser()); 
-          navigate("/user/login"); 
+          // navigate("/user/login"); 
         } else {
           console.error("Error fetching profile:", error);
         }

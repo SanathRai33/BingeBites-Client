@@ -112,35 +112,41 @@ const Reels = () => {
                             loop
                             playsInline
                         />
+
                         <div className="reel-overlay">
 
+                            {/* ACTION BUTTONS (Right Side Floating Column) */}
                             <div className="reel-actions">
                                 <div className="action-btn" onClick={() => handleLike(video._id)}>
-                                    <FaHeart style={{ height: '30px', width: '30px', color: 'red' }} />
-                                    <span className="action-count">{video.likes}</span>
+                                    <FaHeart />
+                                    <span>{video.likes}</span>
                                 </div>
                                 <div className="action-btn" onClick={() => handleSave(video._id)}>
-                                    <FaBookmark style={{ height: '30px', width: '30px', color: '#1c56ed' }} />
-                                    {/* <span className="action-count">23</span> */}
+                                    <FaBookmark />
                                 </div>
                                 <div className="action-btn" onClick={() => handleComment(video._id)}>
-                                    <FaRegComment style={{ height: '30px', width: '30px', color: 'white' }} />
-                                    <span className="action-count">45</span>
+                                    <FaRegComment />
+                                    <span>45</span>
                                 </div>
+                                <button className="order-btn" onClick={() => handleOrder(video._id)}>
+                                    Order
+                                </button>
                             </div>
 
+                            {/* BOTTOM INFO BAR */}
                             <div className="reel-info">
                                 <Link to={`/food-partner/${video.foodPartner}`} className="store-link">
-                                    <div className="store-info">
-                                        <div className="store-avatar">
-                                            { logo ? <img src={ logo} alt={`${name} logo`} /> : <img src={''} alt={`${name} logo`} />}
-                                        </div>
+                                    <div className="store-avatar">
+                                        <img src={logo} alt={name} />
+                                    </div>
+                                    <div className="store-text">
                                         <div className="store-name">@{name}</div>
+                                        <div className="food-name">{video.name}</div>
                                     </div>
                                 </Link>
-                                <div className='food-name' >{video.name}</div>
-                                <div className="video-description">{video.description}</div>
+                                <p className="video-description">{video.description}</p>
                             </div>
+
                         </div>
                     </div>
                 ))
