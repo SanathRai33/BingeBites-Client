@@ -99,12 +99,12 @@ const Reels = () => {
     };
 
     return (
-        <div className="reels-container" ref={containerRef}>
+        <div className="reels-modern-container" ref={containerRef}>
             {loading ? (
                 <Loading />
             ) : (
                 videoData.map((video, index) => (
-                    <div className="reel-item" key={video._id}>
+                    <div className="reel-modern-item" key={video._id}>
                         <video
                             ref={el => videoRefs.current[index] = el}
                             src={video.video}
@@ -112,41 +112,33 @@ const Reels = () => {
                             loop
                             playsInline
                         />
-
-                        <div className="reel-overlay">
-
-                            {/* ACTION BUTTONS (Right Side Floating Column) */}
-                            <div className="reel-actions">
-                                <div className="action-btn" onClick={() => handleLike(video._id)}>
-                                    <FaHeart />
-                                    <span>{video.likes}</span>
-                                </div>
-                                <div className="action-btn" onClick={() => handleSave(video._id)}>
-                                    <FaBookmark />
-                                </div>
-                                <div className="action-btn" onClick={() => handleComment(video._id)}>
-                                    <FaRegComment />
-                                    <span>45</span>
-                                </div>
-                                <button className="order-btn" onClick={() => handleOrder(video._id)}>
-                                    Order
-                                </button>
-                            </div>
-
-                            {/* BOTTOM INFO BAR */}
-                            <div className="reel-info">
-                                <Link to={`/food-partner/${video.foodPartner}`} className="store-link">
-                                    <div className="store-avatar">
-                                        <img src={logo} alt={name} />
-                                    </div>
-                                    <div className="store-text">
-                                        <div className="store-name">@{name}</div>
-                                        <div className="food-name">{video.name}</div>
-                                    </div>
+                        <div className="reel-modern-bottom-bar">
+                            <div className="reel-modern-store">
+                                <Link to={`/food-partner/${video.foodPartner}`}>
+                                    <img className="store-modern-avatar" src={logo} alt={name || 'logo'} />
                                 </Link>
-                                <p className="video-description">{video.description}</p>
+                                <div>
+                                    <div className="store-modern-name">@{name}</div>
+                                    <div className="food-modern-title">{video.name}</div>
+                                </div>
                             </div>
-
+                            <div className="food-modern-desc">{video.description}</div>
+                            <button className="modern-order-btn">
+                                <FaShoppingCart /> Order Now
+                            </button>
+                        </div>
+                        <div className="reel-modern-actions">
+                            <div className="modern-action-btn" onClick={() => handleLike(video._id)}>
+                                <FaHeart className="modern-action-icon" />
+                                <span>{video.likes}</span>
+                            </div>
+                            <div className="modern-action-btn" onClick={() => handleSave(video._id)}>
+                                <FaBookmark className="modern-action-icon" />
+                            </div>
+                            <div className="modern-action-btn" onClick={() => handleComment(video._id)}>
+                                <FaRegComment className="modern-action-icon" />
+                                <span>45</span>
+                            </div>
                         </div>
                     </div>
                 ))
