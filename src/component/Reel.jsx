@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/ReelsModern.css';
+import '../styles/Reels.css';
 import Loading from './Loading';
 import { FaHeart, FaBookmark, FaRegComment, FaShoppingCart } from 'react-icons/fa';
 
