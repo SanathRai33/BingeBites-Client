@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Reels.css';
 import Loading from './Loading';
-import { FaHeart, FaBookmark, FaRegComment, FaShoppingCart } from 'react-icons/fa';
+import { FaHeart, FaBookmark, FaRegComment, FaShoppingCart, FaAngleRight } from 'react-icons/fa';
 
 const Reels = () => {
     const [videoData, setVideoData] = useState([]);
@@ -124,7 +124,8 @@ const Reels = () => {
                             </div>
                             <div className="food-modern-desc">{video.description}</div>
                             <button className="modern-order-btn">
-                                <FaShoppingCart /> Order Now
+                                <span><FaShoppingCart /> Order Now</span>
+                                <span><FaAngleRight /></span>
                             </button>
                         </div>
                         <div className="reel-modern-actions">

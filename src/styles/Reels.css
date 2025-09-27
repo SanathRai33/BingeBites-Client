@@ -24,7 +24,7 @@
 
 .reel-modern-bottom-bar {
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   left: 0;
   width: 100vw;
   background: linear-gradient(to top, #131313cc 80%, transparent);
@@ -90,6 +90,9 @@
   align-items: center;
   gap: 8px;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .modern-order-btn:hover {
@@ -100,7 +103,7 @@
 .reel-modern-actions {
   position: absolute;
   right: 18px;
-  bottom: 120px;
+  bottom: 220px;
   display: flex;
   flex-direction: column;
   gap: 24px;
