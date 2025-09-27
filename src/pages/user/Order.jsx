@@ -16,7 +16,7 @@ const Order = () => {
 //       .catch((err) => console.error("Error fetching order:", err));
 //   }, [id]);
 
-  if (!order) return <div className="order-loading">Loading Order...</div>;
+//   if (!order) return <div className="order-loading">Loading Order...</div>;
 
   return (
     <div className="order-container">
