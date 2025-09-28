@@ -118,7 +118,7 @@ const Reels = () => {
                         />
                         <div className="reel-modern-bottom-bar">
                             <div className="reel-modern-store">
-                                <Link to={`/food-partner/${video.foodPartner}`}>
+                                <Link to={`/food-partner/${video.foodPartner}`} state={{ }} >
                                     <img className="store-modern-avatar" src={logo} alt={name || 'logo'} />
                                 </Link>
                                 <div>
@@ -128,7 +128,7 @@ const Reels = () => {
                             </div>
                             <div className="food-modern-desc">{video.description}</div>
 
-                            <Link to={`/user/order/${video.foodPartner}`}>
+                            <Link to={`/user/order/${video._id}`}>
                                 <button className="modern-order-btn" onClick={handleOrder}>
                                     <span><FaShoppingCart /> Order Now</span>
                                     <span><FaAngleRight /></span>
