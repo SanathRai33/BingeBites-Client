@@ -5,18 +5,24 @@ import { useParams } from "react-router-dom";
 
 const Order = () => {
     const { id } = useParams();
-    const [order, setOrder] = useState(null);
+    const [food, setFood] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    //   useEffect(() => {
-    //     axios
-    //       .get(`${import.meta.env.VITE_BACKEND_URL}/api/order/${id}`, {
-    //         withCredentials: true,
-    //       })
-    //       .then((res) => setOrder(res.data))
-    //       .catch((err) => console.error("Error fetching order:", err));
-    //   }, [id]);
+    useEffect(() => {
+        axios
+            .get(`${import.meta.env.VITE_BACKEND_URL}/api/food/get/${id}`, {
+                withCredentials: true,
+            })
+            .then((res) => {
+                setFood(res.data.food)
+                console.log(food)
+            })
+            .catch((err) => console.error("Error fetching food:", err))
+            .finally(() => setLoading(false));
+    }, [id]);
 
-    //   if (!order) return <div className="order-loading">Loading Order...</div>;
+
+    if (loading) return <div className="order-loading">Loading Order...</div>;
 
     const handleOrder = () => {
         console.log("object")
