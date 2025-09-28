@@ -35,17 +35,17 @@ const Order = () => {
     };
 
     const handleQuantityChange = (index, value) => {
-        const updated = [...items];
+        const updated = [...food];
         updated[index].quantity = value;
         setItems(updated);
     };
 
-    const totalAmount = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    const totalAmount = food.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
     const handleSubmit = () => {
-        if (items.length === 0) return alert("Add at least one item");
+        if (food.length === 0) return alert("Add at least one item");
         onSubmit({
-            items,
+            food,
             deliveryAddress: address,
             paymentMethod,
             totalAmount,
@@ -58,7 +58,7 @@ const Order = () => {
                 <h2>Place Order</h2>
 
                 {/* Food Selection */}
-                <div className="order-items">
+                <div className="order-food">
                     <label>Select Items</label>
                     {foodItems.map((food, idx) => (
                         <button key={idx} type="button" onClick={() => handleAddItem(food)}>
@@ -68,7 +68,7 @@ const Order = () => {
                 </div>
 
                 {/* Selected Items */}
-                {items.map((item, index) => (
+                {food.map((item, index) => (
                     <div key={index} className="order-item">
                         <span>{item.name}</span>
                         <input
