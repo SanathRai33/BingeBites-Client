@@ -16,9 +16,8 @@ const Order = () => {
                 withCredentials: true,
             })
             .then((res) => {
-                setFood(res.data.food)
-                // setFood([{ ...fetchedFood}]);
-                console.log(res?.data)
+                setFood([{ ...fetchedFood, quantity: 1 }]);
+                console.log(res?.data?.food)
             })
             .catch((err) => console.error("Error fetching food:", err))
             .finally(() => setLoading(false));
