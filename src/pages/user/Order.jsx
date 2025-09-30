@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const Order = () => {
     const { id } = useParams();
-    const [food, setFood] = useState(null);
+    const [food, setFood] = useState([]);
     const [loading, setLoading] = useState(true);
     const [address, setAddress] = useState({ street: "", city: "", pincode: "" });
     const [paymentMethod, setPaymentMethod] = useState("COD");
@@ -17,7 +17,8 @@ const Order = () => {
             })
             .then((res) => {
                 setFood(res.data.food)
-                console.log(food)
+                // setFood([{ ...fetchedFood}]);
+                console.log(res?.data)
             })
             .catch((err) => console.error("Error fetching food:", err))
             .finally(() => setLoading(false));
