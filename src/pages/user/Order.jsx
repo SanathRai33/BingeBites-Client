@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 const Order = () => {
     const { id } = useParams();
     const [food, setFood] = useState([]);
+    const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [address, setAddress] = useState({ street: "", city: "", pincode: "" });
     const [paymentMethod, setPaymentMethod] = useState("COD");
