@@ -16,6 +16,7 @@ const Order = () => {
                 withCredentials: true,
             })
             .then((res) => {
+                const fetchedFood = res?.data?.food;
                 setFood([{ ...fetchedFood, quantity: 1 }]);
                 console.log(res?.data?.food)
             })
