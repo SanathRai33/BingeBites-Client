@@ -1,77 +1,110 @@
 .order-container {
   width: 100%;
-  height: calc( 100vh - 60px );
+  min-height: calc(100vh - 60px); /* Leaves space for navbar if any */
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg);
   color: var(--text);
+  padding: 20px;
 }
 
-.order-form{
+.order-form {
   background-color: var(--card);
-  width: 300px;
-  height: 600px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px; /* Stays compact on larger screens */
+  box-shadow: var(--shadow);
   padding: 20px;
   border-radius: 12px;
-  margin: auto;
 }
 
-.order-container h2 {
+.order-form h2 {
   text-align: center;
-  margin-bottom: 25px;
-  font-size: 2rem;
-  border-bottom: 3px solid var(--text);
-}
-
-.order-info, .order-address, .order-items {
   margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 2px solid var(--input-border);
+  padding-bottom: 8px;
 }
 
+/* Order Items */
 .order-item {
   display: flex;
   justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--text);
-}
-
-.order-total {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: right;
-}
-
-.order-btn{
-  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 90%;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--input-border);
+  font-size: 0.95rem;
 }
 
-.order-btn button{
+.order-item input {
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  background: transparent;
+  color: var(--text);
+}
+
+/* Section Spacing */
+.order-address, .order-info {
+  margin-top: 20px;
+}
+
+.order-address input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  border: 1px solid var(--input-border);
+  background: transparent;
+  color: var(--text);
+}
+
+.order-info select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  background: transparent;
+  color: var(--text);
+}
+
+/* Total */
+.order-total {
+  text-align: right;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Button */
+.order-btn {
+  margin-top: 20px;
+}
+
+.order-btn button {
   width: 100%;
   padding: 12px;
-  color: var(--text);
+  color: var(--primary-contrast);
   background-color: var(--primary);
-  border-radius: 12px;
+  border-radius: 8px;
   border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.status {
-  padding: 2px 8px;
-  border-radius: 6px;
-  color:  solid var(--text);
+.order-btn button:hover {
+  opacity: 0.9;
 }
 
-.status.PLACED { background: gray; }
-.status.CONFIRMED { background: blue; }
-.status.PREPARING { background: orange; }
-.status.OUT_FOR_DELIVERY { background: purple; }
-.status.DELIVERED { background: green; }
-.status.CANCELLED { background: red; }
-
+/* Loading */
 .order-loading {
   text-align: center;
   margin-top: 50px;
+  color: var(--muted);
+  font-size: 1rem;
 }
