@@ -59,14 +59,14 @@ const Order = () => {
                 <h2>Place Order</h2>
 
                 {/* Food Selection */}
-                <div className="order-food">
+                {/* <div className="order-food">
                     <label>Select Items</label>
                     {foodItems.map((food, idx) => (
                         <button key={idx} type="button" onClick={() => handleAddItem(food)}>
                             + {food.name} (${food.price})
                         </button>
                     ))}
-                </div>
+                </div> */}
 
                 {/* Selected Items */}
                 {food.map((item, index) => (
