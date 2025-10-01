@@ -84,14 +84,23 @@ const Order = () => {
 
                 {items.map((item, index) => (
                     <div key={index} className="order-item">
-                        <span>{item.name}</span>
-                        <input
-                            type="number"
-                            value={item.quantity}
-                            min="1"
-                            onChange={(e) => handleQuantityChange(index, Number(e.target.value))}
-                        />
-                        <span>₹{(item.price || 0) * (item.quantity || 1)}</span>
+                        <div className="order-item-blocks">
+                            <span>Food</span>
+                            <span>{item.name}</span>
+                        </div>
+                        <div className="order-item-blocks">
+                            <span>Quantity</span>
+                            <input
+                                type="number"
+                                value={item.quantity}
+                                min="1"
+                                onChange={(e) => handleQuantityChange(index, Number(e.target.value))}
+                            />
+                        </div>
+                        <div className="order-item-blocks">
+                            <span>Price</span>
+                            <span>₹{(item.price || 0) * (item.quantity || 1)}</span>
+                        </div>
                     </div>
                 ))}
 

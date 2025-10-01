@@ -14,7 +14,7 @@ const More = () => {
                 console.log('Logout successful:', response.data);
                 localStorage.removeItem('token');
                 document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                navigate('/user/login');
+                navigate(-1);
             })
             .catch(error => {
                 console.error('There was an error logging out!', error);

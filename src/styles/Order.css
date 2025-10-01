@@ -37,6 +37,14 @@
   font-size: 0.95rem;
 }
 
+.order-item-blocks{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--input-border);
+}
+
 .order-item input {
   width: 50px;
   text-align: center;
