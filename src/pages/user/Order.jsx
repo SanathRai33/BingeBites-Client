@@ -106,10 +106,49 @@ const Order = () => {
 
                 <div className="order-address">
                     <label>Delivery Address</label>
+
+                    {/* Radio Toggle */}
+                    <div className="address-toggle">
+                        <label>
+                            <input
+                                type="radio"
+                                name="addressType"
+                                checked={!address.useNew}
+                                onChange={() => {
+                                    // Fetch saved address from user profile
+                                    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/user/profile`, { withCredentials: true })
+                                        .then(res => {
+                                            const saved = res.data?.user?.address || {};
+                                            setAddress({
+                                                street: saved.street || "",
+                                                city: saved.city || "",
+                                                pincode: saved.pincode || "",
+                                                useNew: false
+                                            });
+                                        })
+                                        .catch(() => alert("No saved address found"));
+                                }}
+                            />
+                            Use Saved Address
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="addressType"
+                                checked={address.useNew}
+                                onChange={() => setAddress({ street: "", city: "", pincode: "", useNew: true })}
+                            />
+                            Enter New Address
+                        </label>
+                    </div>
+
+                    {/* Address Fields */}
                     <input
                         type="text"
                         placeholder="Street"
                         value={address.street}
+                        disabled={!address.useNew}
                         onChange={(e) => setAddress({ ...address, street: e.target.value })}
                         required
                     />
@@ -117,6 +156,7 @@ const Order = () => {
                         type="text"
                         placeholder="City"
                         value={address.city}
+                        disabled={!address.useNew}
                         onChange={(e) => setAddress({ ...address, city: e.target.value })}
                         required
                     />
@@ -124,10 +164,12 @@ const Order = () => {
                         type="text"
                         placeholder="Pincode"
                         value={address.pincode}
+                        disabled={!address.useNew}
                         onChange={(e) => setAddress({ ...address, pincode: e.target.value })}
                         required
                     />
                 </div>
+
 
                 <div className="order-info">
                     <label>Payment Method</label>
