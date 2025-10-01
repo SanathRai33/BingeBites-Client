@@ -1,5 +1,4 @@
 import React from 'react'
-import "../../styles/Order.css";
 
 const OrderDetail = () => {
     return (

@@ -225,7 +225,12 @@
 
 /* Order Sections */
 .order-section {
+  min-height: 95vh;
   animation: fadeIn 0.3s ease-in;
+}
+
+.order-section.summary{
+  min-height: 115vh;
 }
 
 @keyframes fadeIn {

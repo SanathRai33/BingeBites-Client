@@ -1,9 +1,8 @@
 import React from 'react'
-import "../../styles/Order.css";
 
 const SummarySection = () => {
     return (
-        <div className="order-section">
+        <div className="order-section summary">
             <h2>Order Summary</h2>
 
             <div className="summary-sections">
