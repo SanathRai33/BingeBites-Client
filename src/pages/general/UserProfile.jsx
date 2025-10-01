@@ -9,8 +9,23 @@ export default function UserProfile() {
   const navigate = useNavigate()
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [editing, setEditing] = useState(false)
-  const [form, setForm] = useState({ fullName: '', phone: '', email: '', address: '' })
+  const [editing, setEditing] = useState(false);
+  const [form, setForm] = useState({
+    fullName: '',
+    phone: '',
+    email: '',
+    address: {
+      street: '',
+      city: '',
+      taluk: '',
+      district: '',
+      state: '',
+      pincode: '',
+      country: 'India',
+      fullAddress: '',
+      coordinates: { lat: null, lon: null },
+    },
+  });
   const [error, setError] = useState(null)
   const [addresss, setAddresss] = useState("");
 
@@ -178,7 +193,7 @@ export default function UserProfile() {
         {!editing && (
           <div className="profile-details">
             <h4>About</h4>
-            <p className="detail-item">{user?.address || 'No address provided'}</p>
+            <p className="detail-item">{user?.address?.fullAddress || 'No address provided'}</p>
 
             <h4>Preferences</h4>
             <div className="prefs">
