@@ -12,6 +12,7 @@ export default function UserProfile() {
   const [editing, setEditing] = useState(false)
   const [form, setForm] = useState({ fullName: '', phone: '', email: '', address: '' })
   const [error, setError] = useState(null)
+  const [addresss, setAddresss] = useState("");
 
   useEffect(() => {
     let mounted = true
@@ -26,12 +27,12 @@ export default function UserProfile() {
           fullName: res.data?.user?.fullName || '',
           phone: res.data?.user?.phone || '',
           email: res.data?.user?.email || '',
-          address: res.data?.user?.address || ''
+          address: res.data?.user?.address?.fullAddress || ''
         })
       })
       .catch((err) => {
         if (err.response?.status === 401) {
-          navigate('/user/login')
+          // navigate('/user/login')
         } else {
           setError('Failed to load profile')
           console.error(err)
@@ -75,6 +76,51 @@ export default function UserProfile() {
     navigate('/user/login')
   }
 
+  const parseAddress = (display_name) => {
+    const parts = display_name.split(',').map(p => p.trim());
+    const length = parts.length;
+
+    return {
+      street: parts[length - 7],
+      city: parts[length - 6],
+      taluk: parts[length - 5],
+      district: parts[length - 4],
+      state: parts[length - 3],
+      pincode: parts[length - 2],
+      country: parts[length - 1],
+      fullAddress: display_name,
+    }
+  };
+
+
+  const handleLocation = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      const { latitude, longitude } = pos.coords;
+
+      try {
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+        );
+        const data = await res.json();
+
+        const structuredAddress = parseAddress(data.display_name);
+        structuredAddress.coordinates = { lat: latitude, lon: longitude };
+
+        setForm((prev) => ({ ...prev, address: structuredAddress }));
+        setAddresss(structuredAddress.fullAddress);
+        console.log('Structured Address:', structuredAddress);
+      } catch (error) {
+        console.error("Failed to fetch location", error);
+      }
+    });
+  };
+
+
   if (loading) {
     return (
       <div className="profile-root">
@@ -95,11 +141,12 @@ export default function UserProfile() {
           <Menubar.Root className='menu'>
             <Menubar.Menu>
               <Menubar.Trigger className="menubar-trigger">
-                <button aria-label="More options" className="more-btn">
+                <span aria-label="More options" className="more-btn">
                   <FaEllipsisV size={16} />
-                </button></Menubar.Trigger>
+                </span>
+              </Menubar.Trigger>
               <Menubar.Content className="menubar-content">
-                <Menubar.Item  onClick={() => navigate('/user/more')} >More</Menubar.Item>
+                <Menubar.Item onClick={() => navigate('/user/more')} >More</Menubar.Item>
               </Menubar.Content>
             </Menubar.Menu>
           </Menubar.Root>
@@ -155,7 +202,7 @@ export default function UserProfile() {
             <input className="form-input" name="email" value={form.email} readOnly />
 
             <label className="form-label">Address</label>
-            <input className="form-input" name="address" value={form.address} onChange={handleChange} required />
+            <button className='use-location-btn' onClick={handleLocation}>Take current location</button>
 
             <div className="form-row">
               <button className="btn-primary" type="submit" >
