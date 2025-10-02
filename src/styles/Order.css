@@ -225,12 +225,19 @@
 
 /* Order Sections */
 .order-section {
-  min-height: 95vh;
   animation: fadeIn 0.3s ease-in;
 }
 
-.order-section.summary{
+.order-section.summary {
   min-height: 115vh;
+}
+
+.order-section.address{
+  min-height: 100vh;
+}
+
+.order-section.payment{
+  min-height: 70vh;
 }
 
 @keyframes fadeIn {
@@ -350,6 +357,7 @@
 
 .address-card {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   padding: 1rem;
   border: 2px solid var(--input-border);
@@ -360,6 +368,8 @@
 }
 
 .address-card.active {
+  display: flex;
+  flex-direction: column;
   border-color: var(--primary);
   background: rgba(59, 130, 246, 0.05);
 }
@@ -368,20 +378,21 @@
   border-color: var(--primary);
 }
 
-.address-radio {
-  margin-right: 1rem;
-  margin-top: 0.25rem;
+.address-top {
+  display: flex;
+  gap: 20px;
 }
 
 .address-content {
   flex: 1;
+  text-align: justify;
 }
 
 .address-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  gap: 10px;
 }
 
 .address-type {
@@ -404,14 +415,9 @@
   font-size: 0.8rem;
 }
 
-.address-fields {
-  margin-top: 1rem;
-}
-
 .address-fields input {
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 0.75rem;
   border: 1px solid var(--input-border);
   border-radius: 0.5rem;
   background: var(--card);

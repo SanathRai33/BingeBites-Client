@@ -1,9 +1,8 @@
 import React from 'react'
-import "../../styles/Order.css";
 
 const PaymentSection = () => {
     return (
-        <div className="order-section">
+        <div className="order-section payment">
             <h2>Select Payment Method</h2>
 
             <div className="payment-options">

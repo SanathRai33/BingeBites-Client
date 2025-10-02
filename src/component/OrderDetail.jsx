@@ -5,26 +5,26 @@ const OrderDetail = () => {
         <div className="order-section">
             <h2>Order Details</h2>
             <div className="order-items-container">
-                {items.map((item, index) => (
+                {items?.map((item, index) => (
                     <div key={index} className="order-item-card">
                         <div className="item-image">
-                            <img src={item.image || "/default-food.jpg"} alt={item.name} />
+                            <img src={item?.image || "/default-food.jpg"} alt={item?.name} />
                         </div>
                         <div className="item-details">
-                            <h4>{item.name}</h4>
-                            <p className="item-price">₹{item.price}</p>
+                            <h4>{item?.name}</h4>
+                            <p className="item-price">₹{item?.price}</p>
                             <div className="quantity-controls">
                                 <label>Quantity:</label>
                                 <input
                                     type="number"
-                                    value={item.quantity}
+                                    value={item?.quantity}
                                     min="1"
                                     onChange={(e) => handleQuantityChange(index, Number(e.target.value))}
                                 />
                             </div>
                         </div>
                         <div className="item-total">
-                            ₹{(item.price || 0) * (item.quantity || 1)}
+                            ₹{(item?.price || 0) * (item?.quantity || 1)}
                         </div>
                     </div>
                 ))}

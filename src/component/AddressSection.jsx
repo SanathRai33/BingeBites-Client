@@ -3,7 +3,7 @@ import React from 'react'
 const AddressSection = () => {
   return (
     
-        <div className="order-section">
+        <div className="order-section address">
             <h2>Delivery Address</h2>
 
             <div className="address-options">
@@ -17,19 +17,16 @@ const AddressSection = () => {
                             useNew: false
                         })}
                     >
-                        <div className="address-radio">
+                        <div className="address-top">
                             <input type="radio" checked={!address.useNew} readOnly />
-                        </div>
-                        <div className="address-content">
                             <div className="address-header">
                                 <strong>📍 Saved Address</strong>
                                 <span className="address-type">Home</span>
                             </div>
-                            <p className="address-text">
-                                {savedAddress.street}, {savedAddress.city}, {savedAddress.pincode}
-                            </p>
-                            {savedAddress.fullAddress && (
-                                <p className="address-full">{savedAddress.fullAddress}</p>
+                        </div>
+                        <div className="address-content">
+                            {savedAddress?.fullAddress && (
+                                <p className="address-full">{savedAddress?.fullAddress}</p>
                             )}
                         </div>
                     </div>
