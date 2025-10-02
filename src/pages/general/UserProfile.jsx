@@ -193,7 +193,12 @@ export default function UserProfile() {
         {!editing && (
           <div className="profile-details">
             <h4>About</h4>
-            <p className="detail-item">{user?.address?.fullAddress || 'No address provided'}</p>
+            <p className="detail-item">
+              {user?.address
+                ? `${user.address.street}, ${user.address.city}, ${user.address.taluk}, ${user.address.district}, ${user.address.state}, -${user.address.pincode}, ${user.address.country}`
+                : 'No address provided'}
+            </p>
+
 
             <h4>Preferences</h4>
             <div className="prefs">

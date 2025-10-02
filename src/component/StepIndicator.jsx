@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StepIndicator = () => {
+const StepIndicator = ({ step }) => {
     return (
         <div className="step-indicator">
             <div className={`step ${step >= 1 ? 'active' : ''}`}>

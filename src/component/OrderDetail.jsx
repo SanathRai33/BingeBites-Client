@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OrderDetail = () => {
+const OrderDetail = ({ items, totalAmount, handleQuantityChange, setStep }) => {
     return (
         <div className="order-section">
             <h2>Order Details</h2>

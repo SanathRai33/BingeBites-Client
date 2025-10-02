@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PaymentSection = () => {
+const PaymentSection = ({ paymentMethod, setPaymentMethod, setStep }) => {
     return (
         <div className="order-section payment">
             <h2>Select Payment Method</h2>

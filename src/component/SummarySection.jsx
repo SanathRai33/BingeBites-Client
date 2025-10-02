@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SummarySection = () => {
+const SummarySection = ({ items, address, paymentMethod, totalAmount, submitting, handleOrder, setStep }) => {
     return (
         <div className="order-section summary">
             <h2>Order Summary</h2>

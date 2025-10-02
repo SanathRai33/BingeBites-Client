@@ -11,7 +11,7 @@ import StepIndicator from "../../component/StepIndicator";
 const Order = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [step, setStep] = useState(1); // 1: Order Details, 2: Address, 3: Payment, 4: Summary
+    const [step, setStep] = useState(1);
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [savedAddress, setSavedAddress] = useState(null);
@@ -104,37 +104,50 @@ const Order = () => {
         }
     };
 
-    const renderStepIndicator = () => (
-        <StepIndicator/>
-    );
-
-    const renderOrderDetails = () => (
-        <OrderDetail />
-    );
-
-    const renderAddressSection = () => (
-        <AddressSection />
-    );
-
-    const renderPaymentSection = () => (
-        <PaymentSection />
-    );
-
-    const renderSummarySection = () => (
-        <SummarySection />
-    );
-
     if (loading) return <div className="order-loading">Loading Order...</div>;
 
     return (
         <div className="order-container">
             <div className="order-form">
-                {renderStepIndicator()}
+                <StepIndicator step={step} />
 
-                {step === 1 && renderOrderDetails()}
-                {step === 2 && renderAddressSection()}
-                {step === 3 && renderPaymentSection()}
-                {step === 4 && renderSummarySection()}
+                {step === 1 && (
+                    <OrderDetail
+                        items={items}
+                        totalAmount={totalAmount}
+                        handleQuantityChange={handleQuantityChange}
+                        setStep={setStep}
+                    />
+                )}
+
+                {step === 2 && (
+                    <AddressSection
+                        savedAddress={savedAddress}
+                        address={address}
+                        setAddress={setAddress}
+                        setStep={setStep}
+                    />
+                )}
+
+                {step === 3 && (
+                    <PaymentSection
+                        paymentMethod={paymentMethod}
+                        setPaymentMethod={setPaymentMethod}
+                        setStep={setStep}
+                    />
+                )}
+
+                {step === 4 && (
+                    <SummarySection
+                        items={items}
+                        address={address}
+                        paymentMethod={paymentMethod}
+                        totalAmount={totalAmount}
+                        submitting={submitting}
+                        handleOrder={handleOrder}
+                        setStep={setStep}
+                    />
+                )}
             </div>
         </div>
     );

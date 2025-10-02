@@ -1,8 +1,7 @@
 import React from 'react'
 
-const AddressSection = () => {
-  return (
-    
+const AddressSection = ({ savedAddress, address, setAddress, setStep }) => {
+    return (
         <div className="order-section address">
             <h2>Delivery Address</h2>
 
@@ -88,7 +87,7 @@ const AddressSection = () => {
                 </button>
             </div>
         </div>
-  )
+    )
 }
 
 export default AddressSection
