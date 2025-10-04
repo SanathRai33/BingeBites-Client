@@ -27,21 +27,23 @@ const AppRoutes = () => {
             <Route path="/food-partner/register" element={<FoodPartnerRegister />} />
             <Route path="/food-partner/login" element={<FoodPartnerLogin />} />
 
+            {/* Partner profile */}
+            <Route path='/foodPartner' element={<PartnerHome />} />
+            <Route path='/food-partner/:id' element={<Profile />} />
+            <Route path='/food-partner/create-food' element={<CreateFood />} />
+
             <Route element={<MainLayout />}>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/foodPartner' element={<PartnerHome/>}/>
-                <Route path='/food-partner/:id' element={<Profile/>}/>
-                <Route path='/user/profile/:id' element={<UserProfile/>}/>
-                <Route path='/food-partner/create-food' element={<CreateFood/>}/>
-                <Route path='/user/liked' element={<LikedVideo/>}/>
-                <Route path='/user/saved' element={<SavedVideo/>}/>
-                <Route path='/user/more' element={<More/>}/>
-                <Route path='/terms' element={<Terms/>}/>
-                <Route path='/user/help' element={<HelpCenter/>}/>
-                <Route path='/user/order/:id' element={<Order/>} />
+                <Route path='/' element={<Home />} />
+                <Route path='/user/profile/:id' element={<UserProfile />} />
+                <Route path='/user/liked' element={<LikedVideo />} />
+                <Route path='/user/saved' element={<SavedVideo />} />
+                <Route path='/user/more' element={<More />} />
+                <Route path='/terms' element={<Terms />} />
+                <Route path='/user/help' element={<HelpCenter />} />
+                <Route path='/user/order/:id' element={<Order />} />
             </Route>
 
-            <Route path='*' element={<NotFound/>} />
+            <Route path='*' element={<NotFound />} />
         </Routes>
     )
 }
