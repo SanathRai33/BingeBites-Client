@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/PartnerHome.css';
+import '../../styles/PartnerHome.css';
 
 const PartnerHome = () => {
   const [name, setName] = useState('');

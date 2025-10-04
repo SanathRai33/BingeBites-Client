@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/PartnerProfile.css';
+import '../../styles/PartnerProfile.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
