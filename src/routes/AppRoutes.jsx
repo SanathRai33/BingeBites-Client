@@ -1,15 +1,21 @@
 // ...existing code...
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import MainLayout from '../layouts/MainLayout'
+//Layout 
+import UserLayout from '../layouts/UserLayout';
+import PartnerLayout from '../layouts/PartnerLayout';
+
+//Authention
 import UserRegister from '../pages/auth/UserRegister'
 import UserLogin from '../pages/auth/UserLogin'
 import FoodPartnerRegister from '../pages/auth/FoodPartnerRegister'
 import FoodPartnerLogin from '../pages/auth/FoodPartnerLogin'
+
+//Pages
 import PartnerHome from '../pages/foodPartners/PartnerHome'
-import Home from '../pages/user/Home'
 import Profile from '../pages/foodPartners/Profile'
 import CreateFood from '../pages/foodPartners/CreateFood'
+import Home from '../pages/user/Home'
 import More from '../pages/user/More'
 import Terms from '../pages/user/Terms'
 import HelpCenter from '../pages/user/HelpCenter'
@@ -28,11 +34,13 @@ const AppRoutes = () => {
             <Route path="/food-partner/login" element={<FoodPartnerLogin />} />
 
             {/* Partner profile */}
-            <Route path='/foodPartner' element={<PartnerHome />} />
-            <Route path='/food-partner/:id' element={<Profile />} />
-            <Route path='/food-partner/create-food' element={<CreateFood />} />
+            <Route element={<PartnerLayout/>}>
+                <Route path='/foodPartner' element={<PartnerHome />} />
+                <Route path='/food-partner/:id' element={<Profile />} />
+                <Route path='/food-partner/create-food' element={<CreateFood />} />
+            </Route>
 
-            <Route element={<MainLayout />}>
+            <Route element={<UserLayout />}>
                 <Route path='/' element={<Home />} />
                 <Route path='/user/profile/:id' element={<UserProfile />} />
                 <Route path='/user/liked' element={<LikedVideo />} />

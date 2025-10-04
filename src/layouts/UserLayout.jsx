@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import BottomNav from '../component/BottomNav';
 import { useSelector } from 'react-redux';
 
-const MainLayout = () => {
+const UserLayout = () => {
   const { pathname } = useLocation();
 
   const hideOn = [
@@ -23,4 +23,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default UserLayout;
