@@ -10,7 +10,7 @@ const Order = () => {
     ];
 
     return (
-        <div className='order-container'>
+        <div className='partner-order-container'>
             <h1>Orders</h1>
             <div className="messages-container">
                 {messages ? messages.map((msg) => (
