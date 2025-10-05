@@ -13,6 +13,7 @@ import FoodPartnerLogin from '../pages/auth/FoodPartnerLogin'
 
 //Pages
 import PartnerHome from '../pages/foodPartners/PartnerHome'
+import PartnerOrder from '../pages/foodPartners/Order'
 import Profile from '../pages/foodPartners/Profile'
 import CreateFood from '../pages/foodPartners/CreateFood'
 import Home from '../pages/user/Home'
@@ -28,6 +29,7 @@ import Order from '../pages/user/Order'
 const AppRoutes = () => {
     return (
         <Routes>
+            {/* Authention */}
             <Route path="/user/register" element={<UserRegister />} />
             <Route path="/user/login" element={<UserLogin />} />
             <Route path="/food-partner/register" element={<FoodPartnerRegister />} />
@@ -36,12 +38,14 @@ const AppRoutes = () => {
             {/* Partner profile */}
             <Route element={<PartnerLayout/>}>
                 <Route path='/foodPartner' element={<PartnerHome />} />
-                <Route path='/food-partner/:id' element={<Profile />} />
                 <Route path='/food-partner/create-food' element={<CreateFood />} />
+                <Route path='/food-partner/orders' element={<PartnerOrder />} />
             </Route>
 
+            {/* User profile */}
             <Route element={<UserLayout />}>
                 <Route path='/' element={<Home />} />
+                <Route path='/food-partner/:id' element={<Profile />} />
                 <Route path='/user/profile/:id' element={<UserProfile />} />
                 <Route path='/user/liked' element={<LikedVideo />} />
                 <Route path='/user/saved' element={<SavedVideo />} />

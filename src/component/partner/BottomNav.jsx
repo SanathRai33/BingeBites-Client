@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaPlusCircle, FaUser } from 'react-icons/fa';
+import { FaClipboardList, FaHome, FaPlusCircle, FaUser } from 'react-icons/fa';
 import '../../styles/partner/BottomNav.css';
 import { useSelector } from 'react-redux';
 
@@ -17,6 +17,11 @@ const BottomNav = () => {
       <Link to="/food-partner/create-food" className="nav-item" aria-label="Create Food">
         <FaPlusCircle />
         <span>Create</span>
+      </Link>
+
+      <Link to="/food-partner/orders" className="nav-item" aria-label="Orders">
+        <FaClipboardList />
+        <span>Orders</span>
       </Link>
 
       <Link to={partner ? `/food-partner/${partner?.id}` : '/food-partner/login'} className="nav-item" aria-label="Profile">
