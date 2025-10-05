@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../styles/partner/Order.css';
 import axios from 'axios';
 
 const Order = () => {
 
-    const [messagess, setMessages] = React.useState(null);
+    const [messagess, setMessages] = useState(null);
 
     const messages = [
         { id: 1, text: 'New order received', type: 'info', avatar: 'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg', name: 'John Dev' },
@@ -20,6 +20,7 @@ const Order = () => {
         }).then(res => {
             setMessages(res.data.orders);
             console.log("Messages fetched:", res.data.orders);
+            console.log("Entire response:", res);
         }).catch(err => {
             console.error('Error fetching messages:', err);
         });
