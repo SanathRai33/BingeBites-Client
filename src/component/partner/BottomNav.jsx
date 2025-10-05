@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome, FaPlusCircle, FaUser } from 'react-icons/fa';
-import '../styles/BottomNav.css';
+import '../../styles/partner/BottomNav.css';
 import { useSelector } from 'react-redux';
 
 const BottomNav = () => {

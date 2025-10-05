@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import BottomNav from '../component/BottomNav';
 import { useSelector } from 'react-redux';
+import BottomNav from '../component/partner/BottomNav';
 
 const PartnerLayout = () => {
   const { pathname } = useLocation();
