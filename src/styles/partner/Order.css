@@ -1,40 +1,57 @@
-.order-container{
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-    /* height: 100%;
+.order-container {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  /* height: 100%;
     width: 100%; */
 
-    h1{
-        font-size: 36px;
-        margin-bottom: 20px;
-        color: var(--text);
-    }
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
 }
 
-.message{
-    width: 250px;
-    padding: 16px;
+.messages-container{
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    border-radius: 12px;
+    gap: 6px;
 }
 
-.message-header{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
+.message {
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 12px;
 }
 
-.avatar{
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+
+  .avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .badge{
+    background-color: var(--bb-accent);
+    color: #fff;
+    padding: 2px 6px;
+    margin: 0 0 10px 90px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 500;
+  }
 }
 
-.message-content{
-    font-size: 14px;
-    color: var(--text);
+.message-content {
+  font-size: 14px;
+  color: var(--text);
 }

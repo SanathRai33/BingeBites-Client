@@ -12,20 +12,16 @@ const Order = () => {
     return (
         <div className='order-container'>
             <h1>Orders</h1>
-            <div className="messages">
+            <div className="messages-container">
                 {messages ? messages.map((msg) => (
                     <div key={msg.id} className='message'>
                         <div className="message-header">
                             <img src={msg.avatar} alt={msg.name} className="avatar" />
                             <span className="name">{msg.name}</span>
+                            <span className='badge'>{msg.type}</span>
                         </div>
                         <p className="message-content">
                             {msg.text}
-                        </p>
-                        <p className={`message-type ${msg.type}`}>
-                            {msg.type.charAt(0).toUpperCase() + msg.type.slice(1)}
-                        </p>
-                        <p className="timestamp">Just now
                         </p>
                     </div>
                 )) : <p>No messages available.</p>
