@@ -1,0 +1,13 @@
+.order-container{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    /* height: 100%;
+    width: 100%; */
+
+    h1{
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: var(--text);
+    }
+}
