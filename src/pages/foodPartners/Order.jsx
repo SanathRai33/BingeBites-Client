@@ -13,19 +13,17 @@ const Order = () => {
     ];
 
     useEffect(() => {
-
         // Simulate fetching messages from an API
-        setTimeout(() => {
-            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/order/`, {
-                withCredentials: true
-            }).then(res => {
-                setMessages(res.data.orders);
-                console.log(res.data.orders);
-            }).catch(err => {
-                console.error('Error fetching messages:', err);
-            });
-        }, 1000);
-    })
+        console.log("Fetching messages...");
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/order/`, {
+            withCredentials: true
+        }).then(res => {
+            setMessages(res.data.orders);
+            console.log("Messages fetched:", res.data.orders);
+        }).catch(err => {
+            console.error('Error fetching messages:', err);
+        });
+    }, []);
 
 
     return (
