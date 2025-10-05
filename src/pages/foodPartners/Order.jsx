@@ -16,7 +16,7 @@ const Order = () => {
 
         // Simulate fetching messages from an API
         setTimeout(() => {
-            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/partner/profile/${id}`, {
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/food/get`, {
                 withCredentials: true
             }).then(res => {
                 setMessages(res.data.orders);
