@@ -29,6 +29,9 @@ const Order = () => {
         <div className="orders-list">
           {orders.map((order) => (
             <div key={order._id} className="order-card">
+              <p className="date">
+                  {new Date(order.createdAt).toLocaleString()}
+                </p>
               <div className="order-header">
                 <span className="customer-name">{order.user?.fullName}</span>
                 <span className={`status ${order.status?.toLowerCase()}`}>
@@ -45,12 +48,11 @@ const Order = () => {
               </div>
 
               <div className="order-info">
-                <p><strong>Total:</strong> ₹{order.totalAmount}</p>
-                <p><strong>Payment:</strong> {order.paymentMethod}</p>
+                <div className="order-payment">
+                  <p><strong>Total:</strong> ₹{order.totalAmount}</p>
+                  <p><strong>Payment:</strong> {order.paymentMethod}</p>
+                </div>
                 <p><strong>Address:</strong> {order.deliveryAddress.street}, {order.deliveryAddress.city} - {order.deliveryAddress.pincode}</p>
-                <p className="date">
-                  {new Date(order.createdAt).toLocaleString()}
-                </p>
               </div>
             </div>
           ))}
